@@ -1,0 +1,969 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/5/2023 3:26:15 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-I7E2QRQ"
+  DTS:CreatorName="DESKTOP-I7E2QRQ\kln"
+  DTS:DTSID="{71BFD282-C832-4FC9-B153-1EA4C5C67142}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="TPapel_Loc"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{BBA61B2E-5CE7-435A-974A-2047D4F76AE4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Cache Connection Manager]"
+      DTS:CreationName="CACHE"
+      DTS:DTSID="{FCE571B7-02B0-4D50-8373-337F771FCA1D}"
+      DTS:ObjectName="Cache Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager>
+          <DTS:CacheColumns>
+            <DTS:CacheColumn
+              DTS:DataType="3"
+              DTS:IndexPosition="1"
+              DTS:ObjectName="id_papel_loc"
+              DTS:DTSID="{68F60389-B2FA-4464-8586-C11C7B4A906D}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="130"
+              DTS:Length="50"
+              DTS:ObjectName="ds_papel_loc"
+              DTS:DTSID="{C33EC064-4143-4425-B3B1-6D3421B6C14D}"
+              DTS:CreationName="" />
+          </DTS:CacheColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\TPapel_Loc"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8638981D-C468-4B42-A1BF-65A824906E4F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TPapel_Loc"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\TPapel_Loc\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from () [refTable]
+where [refTable].[id_papel_loc] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id_papel_loc" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ds_papel_loc" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\TPapel_Loc\123:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TPapel_Loc\Lookup.Connections[CacheConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Cache Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Cache Connection Manager]"
+                  description="Connection manager used to access lookup data."
+                  name="CacheConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TPapel_Loc\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TPapel_Loc\Lookup.Inputs[Lookup Input].Columns[id_papel_loc]"
+                      cachedDataType="i4"
+                      cachedName="id_papel_loc"
+                      lineageId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Output].Columns[id_papel_loc]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">id_papel_loc</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TPapel_Loc\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\TPapel_Loc\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TPapel_Loc\Lookup.Outputs[Lookup Match Output].Columns[id_papel_loc]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\TPapel_Loc\Lookup.Outputs[Lookup Match Output].Columns[id_papel_loc]"
+                      name="id_papel_loc"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">id_papel_loc</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TPapel_Loc\Lookup.Outputs[Lookup Match Output].Columns[ds_papel_loc]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\TPapel_Loc\Lookup.Outputs[Lookup Match Output].Columns[ds_papel_loc]"
+                      name="ds_papel_loc"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ds_papel_loc</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TPapel_Loc\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\TPapel_Loc\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TPapel_Loc\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\TPapel_Loc\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TPapel_Loc\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TPapel_Loc\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TPapel_Loc\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TPapel_Loc\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TPapel_Loc\TPapel_Loc (Postgres)"
+              componentClassID="Attunity.SSISODBCDst"
+              description="ODBC Destination"
+              name="TPapel_Loc (Postgres)"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tpapel_loc"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of rows inserted under the same transaction."
+                  expressionType="Notify"
+                  name="TransactionSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                  expressionType="Notify"
+                  name="InsertMethod">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TPapel_Loc\TPapel_Loc (Postgres).Connections[ODBCConnection]"
+                  connectionManagerID="{E94FA4D8-44DA-402C-9895-237914A6F65A}:invalid"
+                  connectionManagerRefId="{E94FA4D8-44DA-402C-9895-237914A6F65A}:invalid"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TPapel_Loc\TPapel_Loc (Postgres).Inputs[ODBC Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ODBC Destination Input"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TPapel_Loc\TPapel_Loc (Postgres).Inputs[ODBC Destination Input].Columns[id_papel_loc]"
+                      cachedDataType="i4"
+                      cachedName="id_papel_loc"
+                      externalMetadataColumnId="Package\TPapel_Loc\TPapel_Loc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[id_papel_loc]"
+                      lineageId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Output].Columns[id_papel_loc]" />
+                    <inputColumn
+                      refId="Package\TPapel_Loc\TPapel_Loc (Postgres).Inputs[ODBC Destination Input].Columns[ds_papel_loc]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ds_papel_loc"
+                      externalMetadataColumnId="Package\TPapel_Loc\TPapel_Loc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[ds_papel_loc]"
+                      lineageId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Output].Columns[ds_papel_loc]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TPapel_Loc\TPapel_Loc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[id_papel_loc]"
+                      dataType="i4"
+                      name="id_papel_loc" />
+                    <externalMetadataColumn
+                      refId="Package\TPapel_Loc\TPapel_Loc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[ds_papel_loc]"
+                      dataType="wstr"
+                      length="50"
+                      name="ds_papel_loc" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TPapel_Loc\TPapel_Loc (Postgres).Outputs[ODBC Destination Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Destination Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TPapel_Loc\TPapel_Loc (Postgres).Outputs[ODBC Destination Error Output].Columns[id_papel_loc]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TPapel_Loc\TPapel_Loc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[id_papel_loc]"
+                      lineageId="Package\TPapel_Loc\TPapel_Loc (Postgres).Outputs[ODBC Destination Error Output].Columns[id_papel_loc]"
+                      name="id_papel_loc" />
+                    <outputColumn
+                      refId="Package\TPapel_Loc\TPapel_Loc (Postgres).Outputs[ODBC Destination Error Output].Columns[ds_papel_loc]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TPapel_Loc\TPapel_Loc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[ds_papel_loc]"
+                      length="50"
+                      lineageId="Package\TPapel_Loc\TPapel_Loc (Postgres).Outputs[ODBC Destination Error Output].Columns[ds_papel_loc]"
+                      name="ds_papel_loc" />
+                    <outputColumn
+                      refId="Package\TPapel_Loc\TPapel_Loc (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TPapel_Loc\TPapel_Loc (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TPapel_Loc\TPapel_Loc (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TPapel_Loc\TPapel_Loc (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TPapel_Loc\TPapel_Loc (Stage)"
+              componentClassID="Attunity.SSISODBCSrc"
+              description="ODBC Source"
+              name="TPapel_Loc (Stage)"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tpapel_loc"</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TPapel_Loc\TPapel_Loc (Stage).Connections[ODBCConnection]"
+                  connectionManagerID="{B8C7FFE1-A086-4AAD-84FC-A8F41F0AC891}:invalid"
+                  connectionManagerRefId="{B8C7FFE1-A086-4AAD-84FC-A8F41F0AC891}:invalid"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Output].Columns[id_papel_loc]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Output].ExternalColumns[id_papel_loc]"
+                      lineageId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Output].Columns[id_papel_loc]"
+                      name="id_papel_loc" />
+                    <outputColumn
+                      refId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Output].Columns[ds_papel_loc]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Output].ExternalColumns[ds_papel_loc]"
+                      length="50"
+                      lineageId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Output].Columns[ds_papel_loc]"
+                      name="ds_papel_loc" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Output].ExternalColumns[id_papel_loc]"
+                      dataType="i4"
+                      name="id_papel_loc" />
+                    <externalMetadataColumn
+                      refId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Output].ExternalColumns[ds_papel_loc]"
+                      dataType="wstr"
+                      length="50"
+                      name="ds_papel_loc" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Error Output].Columns[id_papel_loc]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Output].ExternalColumns[id_papel_loc]"
+                      lineageId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Error Output].Columns[id_papel_loc]"
+                      name="id_papel_loc" />
+                    <outputColumn
+                      refId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Error Output].Columns[ds_papel_loc]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Output].ExternalColumns[ds_papel_loc]"
+                      length="50"
+                      lineageId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Error Output].Columns[ds_papel_loc]"
+                      name="ds_papel_loc" />
+                    <outputColumn
+                      refId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TPapel_Loc.Paths[Lookup No Match Output]"
+              endId="Package\TPapel_Loc\TPapel_Loc (Postgres).Inputs[ODBC Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\TPapel_Loc\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\TPapel_Loc.Paths[ODBC Source Output]"
+              endId="Package\TPapel_Loc\Lookup.Inputs[Lookup Input]"
+              name="ODBC Source Output"
+              startId="Package\TPapel_Loc\TPapel_Loc (Stage).Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TPapel_Loc_Cache"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7E6C5EC9-1CFD-4DD9-8750-A5F0E661B896}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TPapel_Loc_Cache"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\TPapel_Loc_Cache\Cache Transform"
+              componentClassID="Microsoft.Cache"
+              contactInfo="Cache Transform;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Writes data to a cache (a .caw file) with the Cache Connection Manager. Reuse the cache between multiple Lookup transforms to reduce database load. Share the cache to reduce memory usage. Note: cache data is stored in clear text and not recommended for sensitive data."
+              name="Cache Transform"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TPapel_Loc_Cache\Cache Transform.Connections[CacheConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Cache Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Cache Connection Manager]"
+                  description="The connection used to access the cache."
+                  name="CacheConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TPapel_Loc_Cache\Cache Transform.Inputs[Cache Input]"
+                  hasSideEffects="true"
+                  name="Cache Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TPapel_Loc_Cache\Cache Transform.Inputs[Cache Input].Columns[id_papel_loc]"
+                      cachedDataType="i4"
+                      cachedName="id_papel_loc"
+                      lineageId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Output].Columns[id_papel_loc]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">id_papel_loc</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TPapel_Loc_Cache\Cache Transform.Inputs[Cache Input].Columns[ds_papel_loc]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ds_papel_loc"
+                      lineageId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Output].Columns[ds_papel_loc]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">ds_papel_loc</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TPapel_Loc_Cache\Cache Transform.Outputs[Cache Output]"
+                  name="Cache Output"
+                  synchronousInputId="Package\TPapel_Loc_Cache\Cache Transform.Inputs[Cache Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TPapel_Loc_Cache\TPapel_Loc (Final)"
+              componentClassID="Attunity.SSISODBCSrc"
+              description="ODBC Source"
+              name="TPapel_Loc (Final)"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tpapel_loc"</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Connections[ODBCConnection]"
+                  connectionManagerID="{E94FA4D8-44DA-402C-9895-237914A6F65A}:invalid"
+                  connectionManagerRefId="{E94FA4D8-44DA-402C-9895-237914A6F65A}:invalid"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Output].Columns[id_papel_loc]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Output].ExternalColumns[id_papel_loc]"
+                      lineageId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Output].Columns[id_papel_loc]"
+                      name="id_papel_loc" />
+                    <outputColumn
+                      refId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Output].Columns[ds_papel_loc]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Output].ExternalColumns[ds_papel_loc]"
+                      length="50"
+                      lineageId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Output].Columns[ds_papel_loc]"
+                      name="ds_papel_loc" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Output].ExternalColumns[id_papel_loc]"
+                      dataType="i4"
+                      name="id_papel_loc" />
+                    <externalMetadataColumn
+                      refId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Output].ExternalColumns[ds_papel_loc]"
+                      dataType="wstr"
+                      length="50"
+                      name="ds_papel_loc" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Error Output].Columns[id_papel_loc]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Output].ExternalColumns[id_papel_loc]"
+                      lineageId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Error Output].Columns[id_papel_loc]"
+                      name="id_papel_loc" />
+                    <outputColumn
+                      refId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Error Output].Columns[ds_papel_loc]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Output].ExternalColumns[ds_papel_loc]"
+                      length="50"
+                      lineageId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Error Output].Columns[ds_papel_loc]"
+                      name="ds_papel_loc" />
+                    <outputColumn
+                      refId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TPapel_Loc_Cache.Paths[ODBC Source Output]"
+              endId="Package\TPapel_Loc_Cache\Cache Transform.Inputs[Cache Input]"
+              name="ODBC Source Output"
+              startId="Package\TPapel_Loc_Cache\TPapel_Loc (Final).Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{E105146D-341E-456E-9061-3BCAB3CA71DB}"
+      DTS:From="Package\TPapel_Loc_Cache"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\TPapel_Loc" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="138,42"
+          Id="Package\TPapel_Loc"
+          TopLeft="247,190" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\TPapel_Loc_Cache"
+          TopLeft="234,76" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="319,118">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72"
+              Start="0,0"
+              End="0,64.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\TPapel_Loc">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="115,42"
+          Id="Package\TPapel_Loc\Lookup"
+          TopLeft="300,144" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\TPapel_Loc\TPapel_Loc (Postgres)"
+          TopLeft="266,257" />
+        <EdgeLayout
+          Id="Package\TPapel_Loc.Paths[Lookup No Match Output]"
+          TopLeft="359.5,186">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71"
+              Start="0,0"
+              End="0,63.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,25.9453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="177,42"
+          Id="Package\TPapel_Loc\TPapel_Loc (Stage)"
+          TopLeft="272,41" />
+        <EdgeLayout
+          Id="Package\TPapel_Loc.Paths[ODBC Source Output]"
+          TopLeft="359,83">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TPapel_Loc\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TPapel_Loc\TPapel_Loc (Postgres)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\TPapel_Loc_Cache">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172,42"
+          Id="Package\TPapel_Loc_Cache\TPapel_Loc (Final)"
+          TopLeft="277,65" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\TPapel_Loc_Cache\Cache Transform"
+          TopLeft="276,153" />
+        <EdgeLayout
+          Id="Package\TPapel_Loc_Cache.Paths[ODBC Source Output]"
+          TopLeft="360.5,107">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TPapel_Loc_Cache\TPapel_Loc (Final)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TPapel_Loc\TPapel_Loc (Stage)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

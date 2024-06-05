@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="192.168.0.106.IntegrationPizzaria.curso"
+  DTS:DTSID="{72D84447-8030-474E-B33D-B4DE4E9837D2}"
+  DTS:CreationName="OLEDB">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::ConnectionString_IntegrationPizzaria]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="Password">@[$Project::DB_Password]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=192.168.0.106;User ID=curso;Initial Catalog=IntegrationPizzaria;Provider=MSOLEDBSQL.1;Application Name=SSIS-IntegrationPizzaria-{72D84447-8030-474E-B33D-B4DE4E9837D2}192.168.0.106.IntegrationPizzaria.curso;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvwdAOC+6UEKLIWrkcIybLgAAAAACAAAAAAAQZgAAAAEAACAAAAB4Be1UMdh/m1NHNTT6S9uG26C5/tU6DipGqWa40nJY0wAAAAAOgAAAAAIAACAAAAAAA+mfGfEHB1lEj4IfxDtC6p3gBe4ZN6ZFwk3QOttps4AAAABSdUhTk65B3+y1qAMqSex7FXF7+Fghx6wRZ45xQvHEvryfsV2pUuOoGQlmKpt5LQplK2cMNrImzUDpD5hd3+zcrpmtyWOxpdar3A0LwavtOGANHOjgleLDa1glyoXHol750Hy32/HyjdSwcb8utOPT1mqsF4/kFEQI7OB9cR6ye0AAAADgVvQpD4wlzUo4q/29AqVzvJfx0+CG9okmfK1+whI37UTB36PPKNLSbNG2osMdT7o6npjSH4QqLR9p9dz4MepO</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

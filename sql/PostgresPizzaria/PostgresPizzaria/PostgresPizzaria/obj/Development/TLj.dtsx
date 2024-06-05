@@ -1,0 +1,1038 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/6/2023 10:40:22 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-I7E2QRQ"
+  DTS:CreatorName="DESKTOP-I7E2QRQ\kln"
+  DTS:DTSID="{416D8ED0-4EF7-4F72-A4CE-2B1A637CA27C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5228.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="TLj"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{6A989660-1B94-4A0A-BFD8-C412C6E9244E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TLj_Cache]"
+      DTS:CreationName="CACHE"
+      DTS:DTSID="{453497B7-F261-4F2E-AF42-B82E55B5CF2D}"
+      DTS:ObjectName="TLj_Cache">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager>
+          <DTS:CacheColumns>
+            <DTS:CacheColumn
+              DTS:DataType="3"
+              DTS:IndexPosition="1"
+              DTS:ObjectName="id_lj"
+              DTS:DTSID="{B7D43486-EAE6-4EFE-B9F1-54D72E77AB30}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="130"
+              DTS:Length="50"
+              DTS:ObjectName="nm_lj"
+              DTS:DTSID="{7B38BCC3-D786-4A3E-A775-A2250F33A8C9}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="130"
+              DTS:Length="50"
+              DTS:ObjectName="cd_cnpj"
+              DTS:DTSID="{8BC8EFE0-D27B-46BA-97CC-CB4EA7C04D3D}"
+              DTS:CreationName="" />
+          </DTS:CacheColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\TLj"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0C318C26-46C3-42BA-9294-8B3348F0600D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TLj"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\TLj\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from () [refTable]
+where [refTable].[id_lj] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id_lj" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nm_lj" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cd_cnpj" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Output].Columns[id_lj]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TLj\Lookup.Connections[CacheConnection]"
+                  connectionManagerID="Package.ConnectionManagers[TLj_Cache]"
+                  connectionManagerRefId="Package.ConnectionManagers[TLj_Cache]"
+                  description="Connection manager used to access lookup data."
+                  name="CacheConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TLj\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TLj\Lookup.Inputs[Lookup Input].Columns[id_lj]"
+                      cachedDataType="i4"
+                      cachedName="id_lj"
+                      lineageId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Output].Columns[id_lj]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">id_lj</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TLj\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\TLj\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TLj\Lookup.Outputs[Lookup Match Output].Columns[id_lj]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\TLj\Lookup.Outputs[Lookup Match Output].Columns[id_lj]"
+                      name="id_lj"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">id_lj</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TLj\Lookup.Outputs[Lookup Match Output].Columns[nm_lj]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\TLj\Lookup.Outputs[Lookup Match Output].Columns[nm_lj]"
+                      name="nm_lj"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">nm_lj</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TLj\Lookup.Outputs[Lookup Match Output].Columns[cd_cnpj]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\TLj\Lookup.Outputs[Lookup Match Output].Columns[cd_cnpj]"
+                      name="cd_cnpj"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">cd_cnpj</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TLj\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\TLj\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TLj\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\TLj\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TLj\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TLj\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TLj\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TLj\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TLj\TLj (Postgres)"
+              componentClassID="Microsoft.SSISODBCDst"
+              contactInfo="ODBC Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="ODBC Destination"
+              name="TLj (Postgres)"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tlj"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of rows inserted under the same transaction."
+                  expressionType="Notify"
+                  name="TransactionSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                  expressionType="Notify"
+                  name="InsertMethod">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TLj\TLj (Postgres).Connections[ODBCConnection]"
+                  connectionManagerID="{550A30FC-B0EF-4A25-919B-ADF5354C421B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[pizzariaPostgres]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TLj\TLj (Postgres).Inputs[ODBC Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ODBC Destination Input"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TLj\TLj (Postgres).Inputs[ODBC Destination Input].Columns[id_lj]"
+                      cachedDataType="i4"
+                      cachedName="id_lj"
+                      externalMetadataColumnId="Package\TLj\TLj (Postgres).Inputs[ODBC Destination Input].ExternalColumns[id_lj]"
+                      lineageId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Output].Columns[id_lj]" />
+                    <inputColumn
+                      refId="Package\TLj\TLj (Postgres).Inputs[ODBC Destination Input].Columns[nm_lj]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="nm_lj"
+                      externalMetadataColumnId="Package\TLj\TLj (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_lj]"
+                      lineageId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Output].Columns[nm_lj]" />
+                    <inputColumn
+                      refId="Package\TLj\TLj (Postgres).Inputs[ODBC Destination Input].Columns[cd_cnpj]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="cd_cnpj"
+                      externalMetadataColumnId="Package\TLj\TLj (Postgres).Inputs[ODBC Destination Input].ExternalColumns[cd_cnpj]"
+                      lineageId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Output].Columns[cd_cnpj]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TLj\TLj (Postgres).Inputs[ODBC Destination Input].ExternalColumns[id_lj]"
+                      dataType="i4"
+                      name="id_lj" />
+                    <externalMetadataColumn
+                      refId="Package\TLj\TLj (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_lj]"
+                      dataType="wstr"
+                      length="50"
+                      name="nm_lj" />
+                    <externalMetadataColumn
+                      refId="Package\TLj\TLj (Postgres).Inputs[ODBC Destination Input].ExternalColumns[cd_cnpj]"
+                      dataType="wstr"
+                      length="50"
+                      name="cd_cnpj" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TLj\TLj (Postgres).Outputs[ODBC Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ODBC Destination Error Output"
+                  synchronousInputId="Package\TLj\TLj (Postgres).Inputs[ODBC Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TLj\TLj (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TLj\TLj (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TLj\TLj (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TLj\TLj (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TLj\TLj (SQL Server)"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="TLj (SQL Server)"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TLj]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TLj\TLj (SQL Server).Connections[OleDbConnection]"
+                  connectionManagerID="{15321D78-112F-494A-AAFA-167EC9413012}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[pizzariaSQLServer]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Output].Columns[id_lj]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[id_lj]"
+                      lineageId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Output].Columns[id_lj]"
+                      name="id_lj"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Output].Columns[nm_lj]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[nm_lj]"
+                      length="50"
+                      lineageId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Output].Columns[nm_lj]"
+                      name="nm_lj"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Output].Columns[cd_cnpj]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[cd_cnpj]"
+                      length="50"
+                      lineageId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Output].Columns[cd_cnpj]"
+                      name="cd_cnpj"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[id_lj]"
+                      dataType="i4"
+                      name="id_lj" />
+                    <externalMetadataColumn
+                      refId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[nm_lj]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="nm_lj" />
+                    <externalMetadataColumn
+                      refId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[cd_cnpj]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="cd_cnpj" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Error Output].Columns[id_lj]"
+                      dataType="i4"
+                      lineageId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Error Output].Columns[id_lj]"
+                      name="id_lj" />
+                    <outputColumn
+                      refId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Error Output].Columns[nm_lj]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Error Output].Columns[nm_lj]"
+                      name="nm_lj" />
+                    <outputColumn
+                      refId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Error Output].Columns[cd_cnpj]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Error Output].Columns[cd_cnpj]"
+                      name="cd_cnpj" />
+                    <outputColumn
+                      refId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TLj.Paths[Lookup No Match Output]"
+              endId="Package\TLj\TLj (Postgres).Inputs[ODBC Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\TLj\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\TLj.Paths[OLE DB Source Output]"
+              endId="Package\TLj\Lookup.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\TLj\TLj (SQL Server).Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TLj_Cache"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1ABE015D-7E93-4394-9724-F8CE498644A8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TLj_Cache"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\TLj_Cache\Cache Transform"
+              componentClassID="Microsoft.Cache"
+              contactInfo="Cache Transform;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Writes data to a cache (a .caw file) with the Cache Connection Manager. Reuse the cache between multiple Lookup transforms to reduce database load. Share the cache to reduce memory usage. Note: cache data is stored in clear text and not recommended for sensitive data."
+              name="Cache Transform"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TLj_Cache\Cache Transform.Connections[CacheConnection]"
+                  connectionManagerID="Package.ConnectionManagers[TLj_Cache]"
+                  connectionManagerRefId="Package.ConnectionManagers[TLj_Cache]"
+                  description="The connection used to access the cache."
+                  name="CacheConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TLj_Cache\Cache Transform.Inputs[Cache Input]"
+                  hasSideEffects="true"
+                  name="Cache Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TLj_Cache\Cache Transform.Inputs[Cache Input].Columns[id_lj]"
+                      cachedDataType="i4"
+                      cachedName="id_lj"
+                      lineageId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output].Columns[id_lj]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">id_lj</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TLj_Cache\Cache Transform.Inputs[Cache Input].Columns[nm_lj]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="nm_lj"
+                      lineageId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output].Columns[nm_lj]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">nm_lj</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TLj_Cache\Cache Transform.Inputs[Cache Input].Columns[cd_cnpj]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="cd_cnpj"
+                      lineageId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output].Columns[cd_cnpj]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">cd_cnpj</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TLj_Cache\Cache Transform.Outputs[Cache Output]"
+                  name="Cache Output"
+                  synchronousInputId="Package\TLj_Cache\Cache Transform.Inputs[Cache Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TLj_Cache\TLj (Postgres)"
+              componentClassID="Microsoft.SSISODBCSrc"
+              contactInfo="ODBC Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="ODBC Source"
+              name="TLj (Postgres)"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tlj"</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TLj_Cache\TLj (Postgres).Connections[ODBCConnection]"
+                  connectionManagerID="{550A30FC-B0EF-4A25-919B-ADF5354C421B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[pizzariaPostgres]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output].Columns[id_lj]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_lj]"
+                      lineageId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output].Columns[id_lj]"
+                      name="id_lj" />
+                    <outputColumn
+                      refId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output].Columns[nm_lj]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_lj]"
+                      length="50"
+                      lineageId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output].Columns[nm_lj]"
+                      name="nm_lj" />
+                    <outputColumn
+                      refId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output].Columns[cd_cnpj]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output].ExternalColumns[cd_cnpj]"
+                      length="50"
+                      lineageId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output].Columns[cd_cnpj]"
+                      name="cd_cnpj" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_lj]"
+                      dataType="i4"
+                      name="id_lj" />
+                    <externalMetadataColumn
+                      refId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_lj]"
+                      dataType="wstr"
+                      length="50"
+                      name="nm_lj" />
+                    <externalMetadataColumn
+                      refId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output].ExternalColumns[cd_cnpj]"
+                      dataType="wstr"
+                      length="50"
+                      name="cd_cnpj" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Error Output].Columns[id_lj]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_lj]"
+                      lineageId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Error Output].Columns[id_lj]"
+                      name="id_lj" />
+                    <outputColumn
+                      refId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Error Output].Columns[nm_lj]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_lj]"
+                      length="50"
+                      lineageId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Error Output].Columns[nm_lj]"
+                      name="nm_lj" />
+                    <outputColumn
+                      refId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Error Output].Columns[cd_cnpj]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output].ExternalColumns[cd_cnpj]"
+                      length="50"
+                      lineageId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Error Output].Columns[cd_cnpj]"
+                      name="cd_cnpj" />
+                    <outputColumn
+                      refId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TLj_Cache.Paths[ODBC Source Output]"
+              endId="Package\TLj_Cache\Cache Transform.Inputs[Cache Input]"
+              name="ODBC Source Output"
+              startId="Package\TLj_Cache\TLj (Postgres).Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{222A2A21-0D24-40B2-AAD3-F5AD22233CCC}"
+      DTS:From="Package\TLj_Cache"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\TLj" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="132,42"
+          Id="Package\TLj_Cache"
+          TopLeft="227,78" />
+        <NodeLayout
+          Size="94,42"
+          Id="Package\TLj"
+          TopLeft="250,182" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="295,120">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62"
+              Start="0,0"
+              End="0,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\TLj_Cache">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="148,42"
+          Id="Package\TLj_Cache\TLj (Postgres)"
+          TopLeft="281,115" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\TLj_Cache\Cache Transform"
+          TopLeft="272,208" />
+        <EdgeLayout
+          Id="Package\TLj_Cache.Paths[ODBC Source Output]"
+          TopLeft="354.5,157">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TLj_Cache\TLj (Postgres)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\TLj">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="162,42"
+          Id="Package\TLj\TLj (SQL Server)"
+          TopLeft="261,61" />
+        <NodeLayout
+          Size="115,42"
+          Id="Package\TLj\Lookup"
+          TopLeft="280,156" />
+        <EdgeLayout
+          Id="Package\TLj.Paths[OLE DB Source Output]"
+          TopLeft="339.75,103">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53"
+              Start="0,0"
+              End="0,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="148,42"
+          Id="Package\TLj\TLj (Postgres)"
+          TopLeft="267,247" />
+        <EdgeLayout
+          Id="Package\TLj.Paths[Lookup No Match Output]"
+          TopLeft="339.25,198">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,14.9453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TLj\TLj (SQL Server)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TLj\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TLj\TLj (Postgres)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

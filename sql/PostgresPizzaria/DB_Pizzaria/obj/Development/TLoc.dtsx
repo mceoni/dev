@@ -1,0 +1,1503 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/5/2023 3:37:56 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-I7E2QRQ"
+  DTS:CreatorName="DESKTOP-I7E2QRQ\kln"
+  DTS:DTSID="{6FF554E8-F279-4383-8407-2BCF8522C8ED}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="TLoc"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{B906CBA7-222C-4A26-BDFA-90880CA1C629}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TLoc_Cache]"
+      DTS:CreationName="CACHE"
+      DTS:DTSID="{3FEC2024-D150-4C9F-A57A-AB2732A68BD5}"
+      DTS:ObjectName="TLoc_Cache">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager>
+          <DTS:CacheColumns>
+            <DTS:CacheColumn
+              DTS:DataType="3"
+              DTS:IndexPosition="1"
+              DTS:ObjectName="id_loc"
+              DTS:DTSID="{13D54AD4-5557-4998-BB43-A95FD78F0315}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="130"
+              DTS:Length="40"
+              DTS:ObjectName="cd_cep"
+              DTS:DTSID="{7A24A3D2-B71D-4B0A-83E9-1224628F4B88}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="3"
+              DTS:ObjectName="nro_logdr"
+              DTS:DTSID="{FE5153D3-5D0C-4A36-96B8-B78C0F72C768}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="130"
+              DTS:Length="40"
+              DTS:ObjectName="nm_logdr"
+              DTS:DTSID="{9C1B3B5B-15A0-436D-A60F-2AEE78DC90E7}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="130"
+              DTS:Length="40"
+              DTS:ObjectName="nm_compl"
+              DTS:DTSID="{F54F8A52-4485-4761-8316-AB6D3CE13560}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="130"
+              DTS:Length="40"
+              DTS:ObjectName="nm_regiao"
+              DTS:DTSID="{939FED1F-6B3F-4309-ADE5-F8E3D4885948}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="130"
+              DTS:Length="40"
+              DTS:ObjectName="nm_cidade"
+              DTS:DTSID="{6CE8121D-48F7-4056-9E0E-5C8E64AEE4B3}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="130"
+              DTS:Length="40"
+              DTS:ObjectName="nm_uf"
+              DTS:DTSID="{687C9FFB-859F-47CC-9954-EB9BD69C9D48}"
+              DTS:CreationName="" />
+          </DTS:CacheColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\TLoc"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{78E90179-2577-4636-BA2A-EFF2A64FB47C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TLoc"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\TLoc\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from () [refTable]
+where [refTable].[id_loc] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id_loc" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cd_cep" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nro_logdr" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nm_logdr" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nm_compl" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nm_regiao" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nm_cidade" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nm_uf" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\TLoc\223:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TLoc\Lookup.Connections[CacheConnection]"
+                  connectionManagerID="Package.ConnectionManagers[TLoc_Cache]"
+                  connectionManagerRefId="Package.ConnectionManagers[TLoc_Cache]"
+                  description="Connection manager used to access lookup data."
+                  name="CacheConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TLoc\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TLoc\Lookup.Inputs[Lookup Input].Columns[id_loc]"
+                      cachedDataType="i4"
+                      cachedName="id_loc"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[id_loc]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">id_loc</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TLoc\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\TLoc\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TLoc\Lookup.Outputs[Lookup Match Output].Columns[id_loc]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\TLoc\Lookup.Outputs[Lookup Match Output].Columns[id_loc]"
+                      name="id_loc"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">id_loc</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TLoc\Lookup.Outputs[Lookup Match Output].Columns[cd_cep]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="40"
+                      lineageId="Package\TLoc\Lookup.Outputs[Lookup Match Output].Columns[cd_cep]"
+                      name="cd_cep"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">cd_cep</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TLoc\Lookup.Outputs[Lookup Match Output].Columns[nro_logdr]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\TLoc\Lookup.Outputs[Lookup Match Output].Columns[nro_logdr]"
+                      name="nro_logdr"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">nro_logdr</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TLoc\Lookup.Outputs[Lookup Match Output].Columns[nm_logdr]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="40"
+                      lineageId="Package\TLoc\Lookup.Outputs[Lookup Match Output].Columns[nm_logdr]"
+                      name="nm_logdr"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">nm_logdr</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TLoc\Lookup.Outputs[Lookup Match Output].Columns[nm_compl]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="40"
+                      lineageId="Package\TLoc\Lookup.Outputs[Lookup Match Output].Columns[nm_compl]"
+                      name="nm_compl"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">nm_compl</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TLoc\Lookup.Outputs[Lookup Match Output].Columns[nm_regiao]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="40"
+                      lineageId="Package\TLoc\Lookup.Outputs[Lookup Match Output].Columns[nm_regiao]"
+                      name="nm_regiao"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">nm_regiao</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TLoc\Lookup.Outputs[Lookup Match Output].Columns[nm_cidade]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="40"
+                      lineageId="Package\TLoc\Lookup.Outputs[Lookup Match Output].Columns[nm_cidade]"
+                      name="nm_cidade"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">nm_cidade</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TLoc\Lookup.Outputs[Lookup Match Output].Columns[nm_uf]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="40"
+                      lineageId="Package\TLoc\Lookup.Outputs[Lookup Match Output].Columns[nm_uf]"
+                      name="nm_uf"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">nm_uf</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TLoc\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\TLoc\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TLoc\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\TLoc\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TLoc\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TLoc\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TLoc\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TLoc\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TLoc\TLoc (Postgres)"
+              componentClassID="Attunity.SSISODBCDst"
+              description="ODBC Destination"
+              name="TLoc (Postgres)"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tloc"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of rows inserted under the same transaction."
+                  expressionType="Notify"
+                  name="TransactionSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                  expressionType="Notify"
+                  name="InsertMethod">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TLoc\TLoc (Postgres).Connections[ODBCConnection]"
+                  connectionManagerID="{E94FA4D8-44DA-402C-9895-237914A6F65A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[db_pizzaria.postgres]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ODBC Destination Input"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].Columns[id_loc]"
+                      cachedDataType="i4"
+                      cachedName="id_loc"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[id_loc]"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[id_loc]" />
+                    <inputColumn
+                      refId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].Columns[cd_cep]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="cd_cep"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[cd_cep]"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[cd_cep]" />
+                    <inputColumn
+                      refId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].Columns[nro_logdr]"
+                      cachedDataType="i4"
+                      cachedName="nro_logdr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nro_logdr]"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[nro_logdr]" />
+                    <inputColumn
+                      refId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].Columns[nm_logdr]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="nm_logdr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_logdr]"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[nm_logdr]" />
+                    <inputColumn
+                      refId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].Columns[nm_compl]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="nm_compl"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_compl]"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[nm_compl]" />
+                    <inputColumn
+                      refId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].Columns[nm_regiao]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="nm_regiao"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_regiao]"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[nm_regiao]" />
+                    <inputColumn
+                      refId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].Columns[nm_cidade]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="nm_cidade"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_cidade]"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[nm_cidade]" />
+                    <inputColumn
+                      refId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].Columns[nm_uf]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="nm_uf"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_uf]"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[nm_uf]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[id_loc]"
+                      dataType="i4"
+                      name="id_loc" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[cd_cep]"
+                      dataType="wstr"
+                      length="40"
+                      name="cd_cep" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nro_logdr]"
+                      dataType="i4"
+                      name="nro_logdr" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_logdr]"
+                      dataType="wstr"
+                      length="40"
+                      name="nm_logdr" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_compl]"
+                      dataType="wstr"
+                      length="40"
+                      name="nm_compl" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_regiao]"
+                      dataType="wstr"
+                      length="40"
+                      name="nm_regiao" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_cidade]"
+                      dataType="wstr"
+                      length="40"
+                      name="nm_cidade" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_uf]"
+                      dataType="wstr"
+                      length="40"
+                      name="nm_uf" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Destination Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[id_loc]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[id_loc]"
+                      lineageId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[id_loc]"
+                      name="id_loc" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[cd_cep]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[cd_cep]"
+                      length="40"
+                      lineageId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[cd_cep]"
+                      name="cd_cep" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[nro_logdr]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nro_logdr]"
+                      lineageId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[nro_logdr]"
+                      name="nro_logdr" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[nm_logdr]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_logdr]"
+                      length="40"
+                      lineageId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[nm_logdr]"
+                      name="nm_logdr" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[nm_compl]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_compl]"
+                      length="40"
+                      lineageId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[nm_compl]"
+                      name="nm_compl" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[nm_regiao]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_regiao]"
+                      length="40"
+                      lineageId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[nm_regiao]"
+                      name="nm_regiao" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[nm_cidade]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_cidade]"
+                      length="40"
+                      lineageId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[nm_cidade]"
+                      name="nm_cidade" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[nm_uf]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_uf]"
+                      length="40"
+                      lineageId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[nm_uf]"
+                      name="nm_uf" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TLoc\TLoc (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TLoc\TLoc (Stage)"
+              componentClassID="Attunity.SSISODBCSrc"
+              description="ODBC Source"
+              name="TLoc (Stage)"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tloc"</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TLoc\TLoc (Stage).Connections[ODBCConnection]"
+                  connectionManagerID="{B8C7FFE1-A086-4AAD-84FC-A8F41F0AC891}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[db_stage_table]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[id_loc]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[id_loc]"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[id_loc]"
+                      name="id_loc" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[cd_cep]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[cd_cep]"
+                      length="40"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[cd_cep]"
+                      name="cd_cep" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[nro_logdr]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[nro_logdr]"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[nro_logdr]"
+                      name="nro_logdr" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[nm_logdr]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_logdr]"
+                      length="40"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[nm_logdr]"
+                      name="nm_logdr" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[nm_compl]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_compl]"
+                      length="40"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[nm_compl]"
+                      name="nm_compl" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[nm_regiao]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_regiao]"
+                      length="40"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[nm_regiao]"
+                      name="nm_regiao" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[nm_cidade]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_cidade]"
+                      length="40"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[nm_cidade]"
+                      name="nm_cidade" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[nm_uf]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_uf]"
+                      length="40"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].Columns[nm_uf]"
+                      name="nm_uf" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[id_loc]"
+                      dataType="i4"
+                      name="id_loc" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[cd_cep]"
+                      dataType="wstr"
+                      length="40"
+                      name="cd_cep" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[nro_logdr]"
+                      dataType="i4"
+                      name="nro_logdr" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_logdr]"
+                      dataType="wstr"
+                      length="40"
+                      name="nm_logdr" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_compl]"
+                      dataType="wstr"
+                      length="40"
+                      name="nm_compl" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_regiao]"
+                      dataType="wstr"
+                      length="40"
+                      name="nm_regiao" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_cidade]"
+                      dataType="wstr"
+                      length="40"
+                      name="nm_cidade" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_uf]"
+                      dataType="wstr"
+                      length="40"
+                      name="nm_uf" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[id_loc]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[id_loc]"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[id_loc]"
+                      name="id_loc" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[cd_cep]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[cd_cep]"
+                      length="40"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[cd_cep]"
+                      name="cd_cep" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[nro_logdr]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[nro_logdr]"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[nro_logdr]"
+                      name="nro_logdr" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[nm_logdr]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_logdr]"
+                      length="40"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[nm_logdr]"
+                      name="nm_logdr" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[nm_compl]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_compl]"
+                      length="40"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[nm_compl]"
+                      name="nm_compl" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[nm_regiao]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_regiao]"
+                      length="40"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[nm_regiao]"
+                      name="nm_regiao" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[nm_cidade]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_cidade]"
+                      length="40"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[nm_cidade]"
+                      name="nm_cidade" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[nm_uf]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_uf]"
+                      length="40"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[nm_uf]"
+                      name="nm_uf" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TLoc.Paths[Lookup No Match Output]"
+              endId="Package\TLoc\TLoc (Postgres).Inputs[ODBC Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\TLoc\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\TLoc.Paths[ODBC Source Output]"
+              endId="Package\TLoc\Lookup.Inputs[Lookup Input]"
+              name="ODBC Source Output"
+              startId="Package\TLoc\TLoc (Stage).Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TLoc_Cache"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F68CCA87-8089-4EAA-8F25-5D36A0201B8C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TLoc_Cache"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\TLoc_Cache\Cache Transform"
+              componentClassID="Microsoft.Cache"
+              contactInfo="Cache Transform;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Writes data to a cache (a .caw file) with the Cache Connection Manager. Reuse the cache between multiple Lookup transforms to reduce database load. Share the cache to reduce memory usage. Note: cache data is stored in clear text and not recommended for sensitive data."
+              name="Cache Transform"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TLoc_Cache\Cache Transform.Connections[CacheConnection]"
+                  connectionManagerID="Package.ConnectionManagers[TLoc_Cache]"
+                  connectionManagerRefId="Package.ConnectionManagers[TLoc_Cache]"
+                  description="The connection used to access the cache."
+                  name="CacheConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TLoc_Cache\Cache Transform.Inputs[Cache Input]"
+                  hasSideEffects="true"
+                  name="Cache Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TLoc_Cache\Cache Transform.Inputs[Cache Input].Columns[id_loc]"
+                      cachedDataType="i4"
+                      cachedName="id_loc"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[id_loc]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">id_loc</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TLoc_Cache\Cache Transform.Inputs[Cache Input].Columns[cd_cep]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="cd_cep"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[cd_cep]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">cd_cep</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TLoc_Cache\Cache Transform.Inputs[Cache Input].Columns[nro_logdr]"
+                      cachedDataType="i4"
+                      cachedName="nro_logdr"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[nro_logdr]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">nro_logdr</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TLoc_Cache\Cache Transform.Inputs[Cache Input].Columns[nm_logdr]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="nm_logdr"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[nm_logdr]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">nm_logdr</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TLoc_Cache\Cache Transform.Inputs[Cache Input].Columns[nm_compl]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="nm_compl"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[nm_compl]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">nm_compl</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TLoc_Cache\Cache Transform.Inputs[Cache Input].Columns[nm_regiao]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="nm_regiao"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[nm_regiao]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">nm_regiao</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TLoc_Cache\Cache Transform.Inputs[Cache Input].Columns[nm_cidade]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="nm_cidade"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[nm_cidade]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">nm_cidade</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TLoc_Cache\Cache Transform.Inputs[Cache Input].Columns[nm_uf]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="nm_uf"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[nm_uf]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">nm_uf</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TLoc_Cache\Cache Transform.Outputs[Cache Output]"
+                  name="Cache Output"
+                  synchronousInputId="Package\TLoc_Cache\Cache Transform.Inputs[Cache Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TLoc_Cache\TLoc (Postgres)"
+              componentClassID="Attunity.SSISODBCSrc"
+              description="ODBC Source"
+              name="TLoc (Postgres)"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tloc"</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TLoc_Cache\TLoc (Postgres).Connections[ODBCConnection]"
+                  connectionManagerID="{E94FA4D8-44DA-402C-9895-237914A6F65A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[db_pizzaria.postgres]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[id_loc]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_loc]"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[id_loc]"
+                      name="id_loc" />
+                    <outputColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[cd_cep]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[cd_cep]"
+                      length="40"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[cd_cep]"
+                      name="cd_cep" />
+                    <outputColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[nro_logdr]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[nro_logdr]"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[nro_logdr]"
+                      name="nro_logdr" />
+                    <outputColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[nm_logdr]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_logdr]"
+                      length="40"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[nm_logdr]"
+                      name="nm_logdr" />
+                    <outputColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[nm_compl]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_compl]"
+                      length="40"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[nm_compl]"
+                      name="nm_compl" />
+                    <outputColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[nm_regiao]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_regiao]"
+                      length="40"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[nm_regiao]"
+                      name="nm_regiao" />
+                    <outputColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[nm_cidade]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_cidade]"
+                      length="40"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[nm_cidade]"
+                      name="nm_cidade" />
+                    <outputColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[nm_uf]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_uf]"
+                      length="40"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].Columns[nm_uf]"
+                      name="nm_uf" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_loc]"
+                      dataType="i4"
+                      name="id_loc" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[cd_cep]"
+                      dataType="wstr"
+                      length="40"
+                      name="cd_cep" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[nro_logdr]"
+                      dataType="i4"
+                      name="nro_logdr" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_logdr]"
+                      dataType="wstr"
+                      length="40"
+                      name="nm_logdr" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_compl]"
+                      dataType="wstr"
+                      length="40"
+                      name="nm_compl" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_regiao]"
+                      dataType="wstr"
+                      length="40"
+                      name="nm_regiao" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_cidade]"
+                      dataType="wstr"
+                      length="40"
+                      name="nm_cidade" />
+                    <externalMetadataColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_uf]"
+                      dataType="wstr"
+                      length="40"
+                      name="nm_uf" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[id_loc]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_loc]"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[id_loc]"
+                      name="id_loc" />
+                    <outputColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[cd_cep]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[cd_cep]"
+                      length="40"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[cd_cep]"
+                      name="cd_cep" />
+                    <outputColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[nro_logdr]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[nro_logdr]"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[nro_logdr]"
+                      name="nro_logdr" />
+                    <outputColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[nm_logdr]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_logdr]"
+                      length="40"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[nm_logdr]"
+                      name="nm_logdr" />
+                    <outputColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[nm_compl]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_compl]"
+                      length="40"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[nm_compl]"
+                      name="nm_compl" />
+                    <outputColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[nm_regiao]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_regiao]"
+                      length="40"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[nm_regiao]"
+                      name="nm_regiao" />
+                    <outputColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[nm_cidade]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_cidade]"
+                      length="40"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[nm_cidade]"
+                      name="nm_cidade" />
+                    <outputColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[nm_uf]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_uf]"
+                      length="40"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[nm_uf]"
+                      name="nm_uf" />
+                    <outputColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TLoc_Cache.Paths[ODBC Source Output]"
+              endId="Package\TLoc_Cache\Cache Transform.Inputs[Cache Input]"
+              name="ODBC Source Output"
+              startId="Package\TLoc_Cache\TLoc (Postgres).Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{88DAD961-142E-429A-AC1F-E8C8563A47AC}"
+      DTS:From="Package\TLoc_Cache"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\TLoc" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="103,42"
+          Id="Package\TLoc"
+          TopLeft="306,154" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\TLoc_Cache"
+          TopLeft="287,65" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="357.5,107">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\TLoc">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\TLoc\TLoc (Postgres)"
+          TopLeft="263,234" />
+        <NodeLayout
+          Size="115,42"
+          Id="Package\TLoc\Lookup"
+          TopLeft="284,142" />
+        <EdgeLayout
+          Id="Package\TLoc.Paths[Lookup No Match Output]"
+          TopLeft="341.5,184">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,15.4453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="142,42"
+          Id="Package\TLoc\TLoc (Stage)"
+          TopLeft="270,40" />
+        <EdgeLayout
+          Id="Package\TLoc.Paths[ODBC Source Output]"
+          TopLeft="341.25,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TLoc\TLoc (Postgres)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TLoc\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\TLoc_Cache">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\TLoc_Cache\TLoc (Postgres)"
+          TopLeft="279,73" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\TLoc_Cache\Cache Transform"
+          TopLeft="280,153" />
+        <EdgeLayout
+          Id="Package\TLoc_Cache.Paths[ODBC Source Output]"
+          TopLeft="359.75,115">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TLoc_Cache\TLoc (Postgres)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TLoc\TLoc (Stage)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

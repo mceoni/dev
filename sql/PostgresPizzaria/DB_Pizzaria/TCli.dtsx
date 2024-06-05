@@ -1,0 +1,1060 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/5/2023 4:34:31 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-I7E2QRQ"
+  DTS:CreatorName="DESKTOP-I7E2QRQ\kln"
+  DTS:DTSID="{DA8430E9-547D-4A8E-968A-19838A67C660}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="TCli"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{7A970F17-434B-47BE-BE27-923CDECFABC3}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TCli_Cache]"
+      DTS:CreationName="CACHE"
+      DTS:DTSID="{E26CB23A-354E-478C-82E4-E6DEAC2E083F}"
+      DTS:ObjectName="TCli_Cache">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager>
+          <DTS:CacheColumns>
+            <DTS:CacheColumn
+              DTS:DataType="3"
+              DTS:IndexPosition="1"
+              DTS:ObjectName="id_cli"
+              DTS:DTSID="{ACB48FC0-BCBC-480A-B698-FCB0F7B56D12}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="130"
+              DTS:Length="100"
+              DTS:ObjectName="nm_cli"
+              DTS:DTSID="{34EA2952-8172-4DC4-8A1F-968D91D5C648}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="130"
+              DTS:Length="13"
+              DTS:ObjectName="cd_cpf"
+              DTS:DTSID="{081DAEE9-D353-4292-B503-14EE9B726B1E}"
+              DTS:CreationName="" />
+          </DTS:CacheColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\TCli"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3979DFFA-6482-46B3-A884-C58CED04940E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TCli"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\TCli\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from () [refTable]
+where [refTable].[id_cli] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id_cli" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nm_cli" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cd_cpf" dataType="DT_WSTR" length="13" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\TCli\95:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TCli\Lookup.Connections[CacheConnection]"
+                  connectionManagerID="Package.ConnectionManagers[TCli_Cache]"
+                  connectionManagerRefId="Package.ConnectionManagers[TCli_Cache]"
+                  description="Connection manager used to access lookup data."
+                  name="CacheConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TCli\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TCli\Lookup.Inputs[Lookup Input].Columns[id_cli]"
+                      cachedDataType="i4"
+                      cachedName="id_cli"
+                      lineageId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output].Columns[id_cli]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">id_cli</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TCli\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\TCli\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TCli\Lookup.Outputs[Lookup Match Output].Columns[id_cli]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\TCli\Lookup.Outputs[Lookup Match Output].Columns[id_cli]"
+                      name="id_cli"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">id_cli</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TCli\Lookup.Outputs[Lookup Match Output].Columns[nm_cli]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="100"
+                      lineageId="Package\TCli\Lookup.Outputs[Lookup Match Output].Columns[nm_cli]"
+                      name="nm_cli"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">nm_cli</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TCli\Lookup.Outputs[Lookup Match Output].Columns[cd_cpf]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="13"
+                      lineageId="Package\TCli\Lookup.Outputs[Lookup Match Output].Columns[cd_cpf]"
+                      name="cd_cpf"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">cd_cpf</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TCli\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\TCli\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TCli\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\TCli\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TCli\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TCli\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TCli\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TCli\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TCli\TCli (Final)"
+              componentClassID="Attunity.SSISODBCDst"
+              description="ODBC Destination"
+              name="TCli (Final)"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tcli"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of rows inserted under the same transaction."
+                  expressionType="Notify"
+                  name="TransactionSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                  expressionType="Notify"
+                  name="InsertMethod">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TCli\TCli (Final).Connections[ODBCConnection]"
+                  connectionManagerID="{E94FA4D8-44DA-402C-9895-237914A6F65A}:invalid"
+                  connectionManagerRefId="{E94FA4D8-44DA-402C-9895-237914A6F65A}:invalid"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TCli\TCli (Final).Inputs[ODBC Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ODBC Destination Input"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TCli\TCli (Final).Inputs[ODBC Destination Input].Columns[id_cli]"
+                      cachedDataType="i4"
+                      cachedName="id_cli"
+                      externalMetadataColumnId="Package\TCli\TCli (Final).Inputs[ODBC Destination Input].ExternalColumns[id_cli]"
+                      lineageId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output].Columns[id_cli]" />
+                    <inputColumn
+                      refId="Package\TCli\TCli (Final).Inputs[ODBC Destination Input].Columns[nm_cli]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="nm_cli"
+                      externalMetadataColumnId="Package\TCli\TCli (Final).Inputs[ODBC Destination Input].ExternalColumns[nm_cli]"
+                      lineageId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output].Columns[nm_cli]" />
+                    <inputColumn
+                      refId="Package\TCli\TCli (Final).Inputs[ODBC Destination Input].Columns[cd_cpf]"
+                      cachedDataType="wstr"
+                      cachedLength="13"
+                      cachedName="cd_cpf"
+                      externalMetadataColumnId="Package\TCli\TCli (Final).Inputs[ODBC Destination Input].ExternalColumns[cd_cpf]"
+                      lineageId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output].Columns[cd_cpf]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TCli\TCli (Final).Inputs[ODBC Destination Input].ExternalColumns[id_cli]"
+                      dataType="i4"
+                      name="id_cli" />
+                    <externalMetadataColumn
+                      refId="Package\TCli\TCli (Final).Inputs[ODBC Destination Input].ExternalColumns[nm_cli]"
+                      dataType="wstr"
+                      length="100"
+                      name="nm_cli" />
+                    <externalMetadataColumn
+                      refId="Package\TCli\TCli (Final).Inputs[ODBC Destination Input].ExternalColumns[cd_cpf]"
+                      dataType="wstr"
+                      length="13"
+                      name="cd_cpf" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TCli\TCli (Final).Outputs[ODBC Destination Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Destination Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TCli\TCli (Final).Outputs[ODBC Destination Error Output].Columns[id_cli]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TCli\TCli (Final).Inputs[ODBC Destination Input].ExternalColumns[id_cli]"
+                      lineageId="Package\TCli\TCli (Final).Outputs[ODBC Destination Error Output].Columns[id_cli]"
+                      name="id_cli" />
+                    <outputColumn
+                      refId="Package\TCli\TCli (Final).Outputs[ODBC Destination Error Output].Columns[nm_cli]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TCli\TCli (Final).Inputs[ODBC Destination Input].ExternalColumns[nm_cli]"
+                      length="100"
+                      lineageId="Package\TCli\TCli (Final).Outputs[ODBC Destination Error Output].Columns[nm_cli]"
+                      name="nm_cli" />
+                    <outputColumn
+                      refId="Package\TCli\TCli (Final).Outputs[ODBC Destination Error Output].Columns[cd_cpf]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TCli\TCli (Final).Inputs[ODBC Destination Input].ExternalColumns[cd_cpf]"
+                      length="13"
+                      lineageId="Package\TCli\TCli (Final).Outputs[ODBC Destination Error Output].Columns[cd_cpf]"
+                      name="cd_cpf" />
+                    <outputColumn
+                      refId="Package\TCli\TCli (Final).Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TCli\TCli (Final).Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TCli\TCli (Final).Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TCli\TCli (Final).Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TCli\TCli (Stage)"
+              componentClassID="Attunity.SSISODBCSrc"
+              description="ODBC Source"
+              name="TCli (Stage)"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tcli"</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TCli\TCli (Stage).Connections[ODBCConnection]"
+                  connectionManagerID="{B8C7FFE1-A086-4AAD-84FC-A8F41F0AC891}:invalid"
+                  connectionManagerRefId="{B8C7FFE1-A086-4AAD-84FC-A8F41F0AC891}:invalid"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output].Columns[id_cli]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output].ExternalColumns[id_cli]"
+                      lineageId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output].Columns[id_cli]"
+                      name="id_cli" />
+                    <outputColumn
+                      refId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output].Columns[nm_cli]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_cli]"
+                      length="100"
+                      lineageId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output].Columns[nm_cli]"
+                      name="nm_cli" />
+                    <outputColumn
+                      refId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output].Columns[cd_cpf]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output].ExternalColumns[cd_cpf]"
+                      length="13"
+                      lineageId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output].Columns[cd_cpf]"
+                      name="cd_cpf" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output].ExternalColumns[id_cli]"
+                      dataType="i4"
+                      name="id_cli" />
+                    <externalMetadataColumn
+                      refId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_cli]"
+                      dataType="wstr"
+                      length="100"
+                      name="nm_cli" />
+                    <externalMetadataColumn
+                      refId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output].ExternalColumns[cd_cpf]"
+                      dataType="wstr"
+                      length="13"
+                      name="cd_cpf" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TCli\TCli (Stage).Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TCli\TCli (Stage).Outputs[ODBC Source Error Output].Columns[id_cli]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output].ExternalColumns[id_cli]"
+                      lineageId="Package\TCli\TCli (Stage).Outputs[ODBC Source Error Output].Columns[id_cli]"
+                      name="id_cli" />
+                    <outputColumn
+                      refId="Package\TCli\TCli (Stage).Outputs[ODBC Source Error Output].Columns[nm_cli]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_cli]"
+                      length="100"
+                      lineageId="Package\TCli\TCli (Stage).Outputs[ODBC Source Error Output].Columns[nm_cli]"
+                      name="nm_cli" />
+                    <outputColumn
+                      refId="Package\TCli\TCli (Stage).Outputs[ODBC Source Error Output].Columns[cd_cpf]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output].ExternalColumns[cd_cpf]"
+                      length="13"
+                      lineageId="Package\TCli\TCli (Stage).Outputs[ODBC Source Error Output].Columns[cd_cpf]"
+                      name="cd_cpf" />
+                    <outputColumn
+                      refId="Package\TCli\TCli (Stage).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TCli\TCli (Stage).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TCli\TCli (Stage).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TCli\TCli (Stage).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TCli.Paths[Lookup No Match Output]"
+              endId="Package\TCli\TCli (Final).Inputs[ODBC Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\TCli\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\TCli.Paths[ODBC Source Output]"
+              endId="Package\TCli\Lookup.Inputs[Lookup Input]"
+              name="ODBC Source Output"
+              startId="Package\TCli\TCli (Stage).Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TCli_Cache"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F7C94EF7-51E3-4252-BA52-4C48DF35EA1D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TCli_Cache"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\TCli_Cache\Cache Transform"
+              componentClassID="Microsoft.Cache"
+              contactInfo="Cache Transform;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Writes data to a cache (a .caw file) with the Cache Connection Manager. Reuse the cache between multiple Lookup transforms to reduce database load. Share the cache to reduce memory usage. Note: cache data is stored in clear text and not recommended for sensitive data."
+              name="Cache Transform"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TCli_Cache\Cache Transform.Connections[CacheConnection]"
+                  connectionManagerID="Package.ConnectionManagers[TCli_Cache]"
+                  connectionManagerRefId="Package.ConnectionManagers[TCli_Cache]"
+                  description="The connection used to access the cache."
+                  name="CacheConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TCli_Cache\Cache Transform.Inputs[Cache Input]"
+                  hasSideEffects="true"
+                  name="Cache Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TCli_Cache\Cache Transform.Inputs[Cache Input].Columns[id_cli]"
+                      cachedDataType="i4"
+                      cachedName="id_cli"
+                      lineageId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output].Columns[id_cli]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">id_cli</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TCli_Cache\Cache Transform.Inputs[Cache Input].Columns[nm_cli]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="nm_cli"
+                      lineageId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output].Columns[nm_cli]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">nm_cli</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TCli_Cache\Cache Transform.Inputs[Cache Input].Columns[cd_cpf]"
+                      cachedDataType="wstr"
+                      cachedLength="13"
+                      cachedName="cd_cpf"
+                      lineageId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output].Columns[cd_cpf]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">cd_cpf</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TCli_Cache\Cache Transform.Outputs[Cache Output]"
+                  name="Cache Output"
+                  synchronousInputId="Package\TCli_Cache\Cache Transform.Inputs[Cache Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TCli_Cache\TCli (Postgres)"
+              componentClassID="Attunity.SSISODBCSrc"
+              description="ODBC Source"
+              name="TCli (Postgres)"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tcli"</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TCli_Cache\TCli (Postgres).Connections[ODBCConnection]"
+                  connectionManagerID="{E94FA4D8-44DA-402C-9895-237914A6F65A}:invalid"
+                  connectionManagerRefId="{E94FA4D8-44DA-402C-9895-237914A6F65A}:invalid"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output].Columns[id_cli]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_cli]"
+                      lineageId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output].Columns[id_cli]"
+                      name="id_cli" />
+                    <outputColumn
+                      refId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output].Columns[nm_cli]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_cli]"
+                      length="100"
+                      lineageId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output].Columns[nm_cli]"
+                      name="nm_cli" />
+                    <outputColumn
+                      refId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output].Columns[cd_cpf]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output].ExternalColumns[cd_cpf]"
+                      length="13"
+                      lineageId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output].Columns[cd_cpf]"
+                      name="cd_cpf" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_cli]"
+                      dataType="i4"
+                      name="id_cli" />
+                    <externalMetadataColumn
+                      refId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_cli]"
+                      dataType="wstr"
+                      length="100"
+                      name="nm_cli" />
+                    <externalMetadataColumn
+                      refId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output].ExternalColumns[cd_cpf]"
+                      dataType="wstr"
+                      length="13"
+                      name="cd_cpf" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Error Output].Columns[id_cli]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_cli]"
+                      lineageId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Error Output].Columns[id_cli]"
+                      name="id_cli" />
+                    <outputColumn
+                      refId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Error Output].Columns[nm_cli]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_cli]"
+                      length="100"
+                      lineageId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Error Output].Columns[nm_cli]"
+                      name="nm_cli" />
+                    <outputColumn
+                      refId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Error Output].Columns[cd_cpf]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output].ExternalColumns[cd_cpf]"
+                      length="13"
+                      lineageId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Error Output].Columns[cd_cpf]"
+                      name="cd_cpf" />
+                    <outputColumn
+                      refId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TCli_Cache.Paths[ODBC Source Output]"
+              endId="Package\TCli_Cache\Cache Transform.Inputs[Cache Input]"
+              name="ODBC Source Output"
+              startId="Package\TCli_Cache\TCli (Postgres).Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{032291C1-4245-4107-8C8F-FB867D88A984}"
+      DTS:From="Package\TCli_Cache"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\TCli" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="99,42"
+          Id="Package\TCli"
+          TopLeft="272,180" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\TCli_Cache"
+          TopLeft="257,83" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="323.5,125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\TCli">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="133,42"
+          Id="Package\TCli\TCli (Final)"
+          TopLeft="307,256" />
+        <NodeLayout
+          Size="115,42"
+          Id="Package\TCli\Lookup"
+          TopLeft="314,152" />
+        <EdgeLayout
+          Id="Package\TCli.Paths[Lookup No Match Output]"
+          TopLeft="372.5,194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62"
+              Start="0,0"
+              End="0,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,21.4453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="138,42"
+          Id="Package\TCli\TCli (Stage)"
+          TopLeft="305,42" />
+        <EdgeLayout
+          Id="Package\TCli.Paths[ODBC Source Output]"
+          TopLeft="372.75,84">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,68"
+              Start="0,0"
+              End="0,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TCli\TCli (Final)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TCli\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\TCli_Cache">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\TCli_Cache\TCli (Postgres)"
+          TopLeft="293,60" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\TCli_Cache\Cache Transform"
+          TopLeft="292,159" />
+        <EdgeLayout
+          Id="Package\TCli_Cache.Paths[ODBC Source Output]"
+          TopLeft="371.5,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57"
+              Start="0,0"
+              End="0,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TCli_Cache\TCli (Postgres)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TCli\TCli (Stage)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

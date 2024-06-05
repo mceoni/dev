@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="db_stage_table"
+  DTS:DTSID="{B8C7FFE1-A086-4AAD-84FC-A8F41F0AC891}"
+  DTS:CreationName="ODBC">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::CS_DB_STAGE_TABLE]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="Password">@[$Project::PWD_DB_TABLE]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="uid=postgres;Dsn=DB_STAGE_TABLE;">
+      <DTS:Password
+        DTS:Name="Pwd"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvwdAOC+6UEKLIWrkcIybLgAAAAACAAAAAAAQZgAAAAEAACAAAACI1fLPfCebZx6tOpL+34FOeLwRXuU33SWPEhJtQG13KQAAAAAOgAAAAAIAACAAAAATawFHZ2QcYIt0Vr/9X+41IemQ4dh/jq/9nVRBSFO0TnAAAABcvtIlB2XJttPlOHyRvABMooMhi8a+opqQNR6C7JUxdYp8geCda6zh1P7uKNxvm76IPnj2WMa86xlcRTNTieSyFK38XuI6CxAIIeV/r4Eig1Jbhp6oKQO3+0D2rmXRInG7eI8CtzvpJI1zAEu9yRexQAAAAIjyrjtmmRJcz2FwlO8D4H63f4OMzEsahcf1cnplrTOk1JrG9v1JEH91ohWJyHEh6wtW6/RSwcX1mdajexn5y8Y=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

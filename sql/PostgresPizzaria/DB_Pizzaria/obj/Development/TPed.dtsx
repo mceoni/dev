@@ -1,0 +1,1242 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/5/2023 3:18:15 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-I7E2QRQ"
+  DTS:CreatorName="DESKTOP-I7E2QRQ\kln"
+  DTS:DTSID="{E847F825-4DCD-4DB7-B22F-5A76D5D687BF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="TPed"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{692A401F-4AD2-4D7C-A8B3-30DC1719316E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TPed_Cache]"
+      DTS:CreationName="CACHE"
+      DTS:DTSID="{32C0592B-A053-4464-AA9C-7B5581EF5CA7}"
+      DTS:ObjectName="TPed_Cache">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager>
+          <DTS:CacheColumns>
+            <DTS:CacheColumn
+              DTS:DataType="3"
+              DTS:IndexPosition="1"
+              DTS:ObjectName="id_ped"
+              DTS:DTSID="{6575FCE7-9F7B-4AEA-B423-8757D988B169}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="133"
+              DTS:ObjectName="dt_ped"
+              DTS:DTSID="{A6819CF8-A4A0-4DBB-A78A-A1446202E616}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="134"
+              DTS:ObjectName="hr_ped"
+              DTS:DTSID="{993C11FA-2C36-4241-AE66-3B4EF4C1B659}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="131"
+              DTS:Precision="28"
+              DTS:Scale="6"
+              DTS:ObjectName="t_prodc"
+              DTS:DTSID="{78F3092F-42B8-4A22-9B80-B78D19B7C50E}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="131"
+              DTS:Precision="28"
+              DTS:Scale="6"
+              DTS:ObjectName="vlr_tot"
+              DTS:DTSID="{EEBC683C-E8EC-4E22-B85A-B97B57BD55A1}"
+              DTS:CreationName="" />
+          </DTS:CacheColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{98F40EB1-FBD3-44EA-80E7-6851032C887D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from () [refTable]
+where [refTable].[id_ped] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id_ped" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dt_ped" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hr_ped" dataType="DT_DBTIME" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="t_prodc" dataType="DT_NUMERIC" length="0" precision="28" scale="6" codePage="0"/&gt;&lt;referenceColumn name="vlr_tot" dataType="DT_NUMERIC" length="0" precision="28" scale="6" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].Columns[id_ped]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Lookup.Connections[CacheConnection]"
+                  connectionManagerID="Package.ConnectionManagers[TPed_Cache]"
+                  connectionManagerRefId="Package.ConnectionManagers[TPed_Cache]"
+                  description="Connection manager used to access lookup data."
+                  name="CacheConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Lookup.Inputs[Lookup Input].Columns[id_ped]"
+                      cachedDataType="i4"
+                      cachedName="id_ped"
+                      lineageId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].Columns[id_ped]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">id_ped</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[id_ped]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[id_ped]"
+                      name="id_ped"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">id_ped</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[dt_ped]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[dt_ped]"
+                      name="dt_ped"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">dt_ped</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[hr_ped]"
+                      dataType="dbTime"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[hr_ped]"
+                      name="hr_ped"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">hr_ped</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[t_prodc]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[t_prodc]"
+                      name="t_prodc"
+                      precision="28"
+                      scale="6"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">t_prodc</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[vlr_tot]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[vlr_tot]"
+                      name="vlr_tot"
+                      precision="28"
+                      scale="6"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">vlr_tot</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\TPed (Postgres)"
+              componentClassID="Attunity.SSISODBCDst"
+              description="ODBC Destination"
+              name="TPed (Postgres)"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tped"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of rows inserted under the same transaction."
+                  expressionType="Notify"
+                  name="TransactionSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                  expressionType="Notify"
+                  name="InsertMethod">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\TPed (Postgres).Connections[ODBCConnection]"
+                  connectionManagerID="{E94FA4D8-44DA-402C-9895-237914A6F65A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[db_pizzaria.postgres]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ODBC Destination Input"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].Columns[id_ped]"
+                      cachedDataType="i4"
+                      cachedName="id_ped"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].ExternalColumns[id_ped]"
+                      lineageId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].Columns[id_ped]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].Columns[dt_ped]"
+                      cachedDataType="dbDate"
+                      cachedName="dt_ped"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].ExternalColumns[dt_ped]"
+                      lineageId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].Columns[dt_ped]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].Columns[t_prodc]"
+                      cachedDataType="numeric"
+                      cachedName="t_prodc"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].ExternalColumns[t_prodc]"
+                      lineageId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].Columns[t_prodc]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].Columns[vlr_tot]"
+                      cachedDataType="numeric"
+                      cachedName="vlr_tot"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].ExternalColumns[vlr_tot]"
+                      lineageId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].Columns[vlr_tot]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].Columns[hr_ped]"
+                      cachedDataType="dbTime"
+                      cachedName="hr_ped"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].ExternalColumns[hr_ped]"
+                      lineageId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].Columns[hr_ped]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].ExternalColumns[id_ped]"
+                      dataType="i4"
+                      name="id_ped" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].ExternalColumns[dt_ped]"
+                      dataType="dbDate"
+                      name="dt_ped" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].ExternalColumns[hr_ped]"
+                      dataType="dbTime"
+                      name="hr_ped" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].ExternalColumns[t_prodc]"
+                      dataType="numeric"
+                      name="t_prodc"
+                      precision="28"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].ExternalColumns[vlr_tot]"
+                      dataType="numeric"
+                      name="vlr_tot"
+                      precision="28"
+                      scale="6" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\TPed (Postgres).Outputs[ODBC Destination Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Destination Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\TPed (Postgres).Outputs[ODBC Destination Error Output].Columns[id_ped]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].ExternalColumns[id_ped]"
+                      lineageId="Package\Data Flow Task\TPed (Postgres).Outputs[ODBC Destination Error Output].Columns[id_ped]"
+                      name="id_ped" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TPed (Postgres).Outputs[ODBC Destination Error Output].Columns[dt_ped]"
+                      dataType="dbDate"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].ExternalColumns[dt_ped]"
+                      lineageId="Package\Data Flow Task\TPed (Postgres).Outputs[ODBC Destination Error Output].Columns[dt_ped]"
+                      name="dt_ped" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TPed (Postgres).Outputs[ODBC Destination Error Output].Columns[hr_ped]"
+                      dataType="dbTime"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].ExternalColumns[hr_ped]"
+                      lineageId="Package\Data Flow Task\TPed (Postgres).Outputs[ODBC Destination Error Output].Columns[hr_ped]"
+                      name="hr_ped" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TPed (Postgres).Outputs[ODBC Destination Error Output].Columns[t_prodc]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].ExternalColumns[t_prodc]"
+                      lineageId="Package\Data Flow Task\TPed (Postgres).Outputs[ODBC Destination Error Output].Columns[t_prodc]"
+                      name="t_prodc"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TPed (Postgres).Outputs[ODBC Destination Error Output].Columns[vlr_tot]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input].ExternalColumns[vlr_tot]"
+                      lineageId="Package\Data Flow Task\TPed (Postgres).Outputs[ODBC Destination Error Output].Columns[vlr_tot]"
+                      name="vlr_tot"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TPed (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\TPed (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TPed (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\TPed (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\TPed (Stage)"
+              componentClassID="Attunity.SSISODBCSrc"
+              description="ODBC Source"
+              name="TPed (Stage)"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tped"</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\TPed (Stage).Connections[ODBCConnection]"
+                  connectionManagerID="{B8C7FFE1-A086-4AAD-84FC-A8F41F0AC891}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[db_stage_table]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].Columns[id_ped]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].ExternalColumns[id_ped]"
+                      lineageId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].Columns[id_ped]"
+                      name="id_ped" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].Columns[dt_ped]"
+                      dataType="dbDate"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].ExternalColumns[dt_ped]"
+                      lineageId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].Columns[dt_ped]"
+                      name="dt_ped" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].Columns[hr_ped]"
+                      dataType="dbTime"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].ExternalColumns[hr_ped]"
+                      lineageId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].Columns[hr_ped]"
+                      name="hr_ped" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].Columns[t_prodc]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].ExternalColumns[t_prodc]"
+                      lineageId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].Columns[t_prodc]"
+                      name="t_prodc"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].Columns[vlr_tot]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].ExternalColumns[vlr_tot]"
+                      lineageId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].Columns[vlr_tot]"
+                      name="vlr_tot"
+                      precision="28"
+                      scale="6" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].ExternalColumns[id_ped]"
+                      dataType="i4"
+                      name="id_ped" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].ExternalColumns[dt_ped]"
+                      dataType="dbDate"
+                      name="dt_ped" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].ExternalColumns[hr_ped]"
+                      dataType="dbTime"
+                      name="hr_ped" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].ExternalColumns[t_prodc]"
+                      dataType="numeric"
+                      name="t_prodc"
+                      precision="28"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].ExternalColumns[vlr_tot]"
+                      dataType="numeric"
+                      name="vlr_tot"
+                      precision="28"
+                      scale="6" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Error Output].Columns[id_ped]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].ExternalColumns[id_ped]"
+                      lineageId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Error Output].Columns[id_ped]"
+                      name="id_ped" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Error Output].Columns[dt_ped]"
+                      dataType="dbDate"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].ExternalColumns[dt_ped]"
+                      lineageId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Error Output].Columns[dt_ped]"
+                      name="dt_ped" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Error Output].Columns[hr_ped]"
+                      dataType="dbTime"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].ExternalColumns[hr_ped]"
+                      lineageId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Error Output].Columns[hr_ped]"
+                      name="hr_ped" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Error Output].Columns[t_prodc]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].ExternalColumns[t_prodc]"
+                      lineageId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Error Output].Columns[t_prodc]"
+                      name="t_prodc"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Error Output].Columns[vlr_tot]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output].ExternalColumns[vlr_tot]"
+                      lineageId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Error Output].Columns[vlr_tot]"
+                      name="vlr_tot"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup No Match Output]"
+              endId="Package\Data Flow Task\TPed (Postgres).Inputs[ODBC Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Data Flow Task\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[ODBC Source Output]"
+              endId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]"
+              name="ODBC Source Output"
+              startId="Package\Data Flow Task\TPed (Stage).Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TPed_Cache_Postgres"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0536B324-4664-4566-B506-CB5923C2F147}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TPed_Cache_Postgres"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\TPed_Cache_Postgres\Cache Transform"
+              componentClassID="Microsoft.Cache"
+              contactInfo="Cache Transform;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Writes data to a cache (a .caw file) with the Cache Connection Manager. Reuse the cache between multiple Lookup transforms to reduce database load. Share the cache to reduce memory usage. Note: cache data is stored in clear text and not recommended for sensitive data."
+              name="Cache Transform"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TPed_Cache_Postgres\Cache Transform.Connections[CacheConnection]"
+                  connectionManagerID="Package.ConnectionManagers[TPed_Cache]"
+                  connectionManagerRefId="Package.ConnectionManagers[TPed_Cache]"
+                  description="The connection used to access the cache."
+                  name="CacheConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TPed_Cache_Postgres\Cache Transform.Inputs[Cache Input]"
+                  hasSideEffects="true"
+                  name="Cache Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TPed_Cache_Postgres\Cache Transform.Inputs[Cache Input].Columns[id_ped]"
+                      cachedDataType="i4"
+                      cachedName="id_ped"
+                      lineageId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].Columns[id_ped]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">id_ped</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TPed_Cache_Postgres\Cache Transform.Inputs[Cache Input].Columns[dt_ped]"
+                      cachedDataType="dbDate"
+                      cachedName="dt_ped"
+                      lineageId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].Columns[dt_ped]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">dt_ped</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TPed_Cache_Postgres\Cache Transform.Inputs[Cache Input].Columns[hr_ped]"
+                      cachedDataType="dbTime"
+                      cachedName="hr_ped"
+                      lineageId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].Columns[hr_ped]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">hr_ped</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TPed_Cache_Postgres\Cache Transform.Inputs[Cache Input].Columns[t_prodc]"
+                      cachedDataType="numeric"
+                      cachedName="t_prodc"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      lineageId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].Columns[t_prodc]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">t_prodc</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TPed_Cache_Postgres\Cache Transform.Inputs[Cache Input].Columns[vlr_tot]"
+                      cachedDataType="numeric"
+                      cachedName="vlr_tot"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      lineageId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].Columns[vlr_tot]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">vlr_tot</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TPed_Cache_Postgres\Cache Transform.Outputs[Cache Output]"
+                  name="Cache Output"
+                  synchronousInputId="Package\TPed_Cache_Postgres\Cache Transform.Inputs[Cache Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TPed_Cache_Postgres\TPed (Final)"
+              componentClassID="Attunity.SSISODBCSrc"
+              description="ODBC Source"
+              name="TPed (Final)"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tped"</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TPed_Cache_Postgres\TPed (Final).Connections[ODBCConnection]"
+                  connectionManagerID="{E94FA4D8-44DA-402C-9895-237914A6F65A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[db_pizzaria.postgres]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].Columns[id_ped]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].ExternalColumns[id_ped]"
+                      lineageId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].Columns[id_ped]"
+                      name="id_ped" />
+                    <outputColumn
+                      refId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].Columns[dt_ped]"
+                      dataType="dbDate"
+                      externalMetadataColumnId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].ExternalColumns[dt_ped]"
+                      lineageId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].Columns[dt_ped]"
+                      name="dt_ped" />
+                    <outputColumn
+                      refId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].Columns[hr_ped]"
+                      dataType="dbTime"
+                      externalMetadataColumnId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].ExternalColumns[hr_ped]"
+                      lineageId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].Columns[hr_ped]"
+                      name="hr_ped" />
+                    <outputColumn
+                      refId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].Columns[t_prodc]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].ExternalColumns[t_prodc]"
+                      lineageId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].Columns[t_prodc]"
+                      name="t_prodc"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].Columns[vlr_tot]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].ExternalColumns[vlr_tot]"
+                      lineageId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].Columns[vlr_tot]"
+                      name="vlr_tot"
+                      precision="28"
+                      scale="6" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].ExternalColumns[id_ped]"
+                      dataType="i4"
+                      name="id_ped" />
+                    <externalMetadataColumn
+                      refId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].ExternalColumns[dt_ped]"
+                      dataType="dbDate"
+                      name="dt_ped" />
+                    <externalMetadataColumn
+                      refId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].ExternalColumns[hr_ped]"
+                      dataType="dbTime"
+                      name="hr_ped" />
+                    <externalMetadataColumn
+                      refId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].ExternalColumns[t_prodc]"
+                      dataType="numeric"
+                      name="t_prodc"
+                      precision="28"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].ExternalColumns[vlr_tot]"
+                      dataType="numeric"
+                      name="vlr_tot"
+                      precision="28"
+                      scale="6" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Error Output].Columns[id_ped]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].ExternalColumns[id_ped]"
+                      lineageId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Error Output].Columns[id_ped]"
+                      name="id_ped" />
+                    <outputColumn
+                      refId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Error Output].Columns[dt_ped]"
+                      dataType="dbDate"
+                      externalMetadataColumnId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].ExternalColumns[dt_ped]"
+                      lineageId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Error Output].Columns[dt_ped]"
+                      name="dt_ped" />
+                    <outputColumn
+                      refId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Error Output].Columns[hr_ped]"
+                      dataType="dbTime"
+                      externalMetadataColumnId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].ExternalColumns[hr_ped]"
+                      lineageId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Error Output].Columns[hr_ped]"
+                      name="hr_ped" />
+                    <outputColumn
+                      refId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Error Output].Columns[t_prodc]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].ExternalColumns[t_prodc]"
+                      lineageId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Error Output].Columns[t_prodc]"
+                      name="t_prodc"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Error Output].Columns[vlr_tot]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output].ExternalColumns[vlr_tot]"
+                      lineageId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Error Output].Columns[vlr_tot]"
+                      name="vlr_tot"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TPed_Cache_Postgres.Paths[ODBC Source Output]"
+              endId="Package\TPed_Cache_Postgres\Cache Transform.Inputs[Cache Input]"
+              name="ODBC Source Output"
+              startId="Package\TPed_Cache_Postgres\TPed (Final).Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{AF044981-2DE3-46FB-B47B-CA20A69E876E}"
+      DTS:From="Package\TPed_Cache_Postgres"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Data Flow Task"
+          TopLeft="277,188" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\TPed_Cache_Postgres"
+          TopLeft="258,88" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="354.5,130">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Data Flow Task\TPed (Postgres)"
+          TopLeft="265,346" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Data Flow Task\TPed (Stage)"
+          TopLeft="274,105" />
+        <NodeLayout
+          Size="115,42"
+          Id="Package\Data Flow Task\Lookup"
+          TopLeft="287,216" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[ODBC Source Output]"
+          TopLeft="345.25,147">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69"
+              Start="0,0"
+              End="0,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
+          TopLeft="344.5,258">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,88"
+              Start="0,0"
+              End="0,80.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,80.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,34.4453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\TPed (Postgres)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\TPed_Cache_Postgres">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="140,42"
+          Id="Package\TPed_Cache_Postgres\TPed (Final)"
+          TopLeft="296,74" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\TPed_Cache_Postgres\Cache Transform"
+          TopLeft="278,183" />
+        <EdgeLayout
+          Id="Package\TPed_Cache_Postgres.Paths[ODBC Source Output]"
+          TopLeft="363,116">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67"
+              Start="0,0"
+              End="0,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TPed_Cache_Postgres\TPed (Final)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\TPed (Stage)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

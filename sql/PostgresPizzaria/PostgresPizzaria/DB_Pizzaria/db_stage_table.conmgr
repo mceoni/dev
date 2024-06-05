@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="db_stage_table"
+  DTS:DTSID="{B8C7FFE1-A086-4AAD-84FC-A8F41F0AC891}"
+  DTS:CreationName="ODBC">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::CS_DB_STAGE_TABLE]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="Password">@[$Project::PWD_DB_TABLE]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="uid=postgres;Dsn=db_stage_pizzaria;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

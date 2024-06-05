@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="db_pizzaria.postgres"
+  DTS:DTSID="{E94FA4D8-44DA-402C-9895-237914A6F65A}"
+  DTS:CreationName="ODBC">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::CS_DB_TABLE]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="Password">@[$Project::PWD_DB_TABLE]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="uid=postgres;Dsn=db_pizzaria;">
+      <DTS:Password
+        DTS:Name="Pwd"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvwdAOC+6UEKLIWrkcIybLgAAAAACAAAAAAAQZgAAAAEAACAAAAArnbyAAI/NLXXOcraLy3LJm/qN9mYwTJiKkAuEblwjcAAAAAAOgAAAAAIAACAAAABEHL8XdXUrt2GpAzg4Fwma10DAtkfMSYND4bdRw5fxwnAAAABHl9xM3+IoshqtY9D9150pCI8wR7tcKpgDsZZSAfpZc2e11Hm7mA0Vf7M1gktd4tIBDNOEMUFzK/hjBsjBfZF14ivhEPHMzQ/dQzNoBqBgSh7zEKab1UXOtf9TPXZ+PbakWO4PvE93GNP4PkMB+EE9QAAAANpcVaf1q3yDGW5Rt3xzxvbQTVClcPrYhQup47uFf6nZKnVW7hXBKyWRrXNQNNPFGLoMRYo32yGuWXbAtdky328=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

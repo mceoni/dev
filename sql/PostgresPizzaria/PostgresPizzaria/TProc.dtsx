@@ -1,0 +1,1622 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/5/2023 1:55:03 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-I7E2QRQ"
+  DTS:CreatorName="DESKTOP-I7E2QRQ\kln"
+  DTS:DTSID="{A981AAAD-C819-45A9-A57A-E26ECFC682B2}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="TProc"
+  DTS:PackageType="5"
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{3B1C5255-1386-409B-A3D8-56F87891D49B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Cache Connection Manager]"
+      DTS:CreationName="CACHE"
+      DTS:DTSID="{534C8B96-D070-4209-BA96-8C15F4F114AD}"
+      DTS:ObjectName="Cache Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager>
+          <DTS:CacheColumns>
+            <DTS:CacheColumn
+              DTS:DataType="3"
+              DTS:IndexPosition="1"
+              DTS:ObjectName="id_ped"
+              DTS:DTSID="{1501C62D-6B60-4BD9-BD4A-4E3B195D31A4}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="133"
+              DTS:ObjectName="dt_expd"
+              DTS:DTSID="{3DCDE14B-8857-40E3-8227-0D3670ED27CA}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="134"
+              DTS:ObjectName="hr_expd"
+              DTS:DTSID="{547709D3-0026-486E-A1D8-78EE3DF9F57A}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="133"
+              DTS:ObjectName="dt_entrg"
+              DTS:DTSID="{DAFE4D86-2D52-4F34-9832-753070763AC6}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="131"
+              DTS:Precision="28"
+              DTS:Scale="6"
+              DTS:ObjectName="t_entrg"
+              DTS:DTSID="{F31B2D0B-B158-4234-B72C-DB98A9FA794C}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="131"
+              DTS:Precision="28"
+              DTS:Scale="6"
+              DTS:ObjectName="vlr_tx_entrg"
+              DTS:DTSID="{9CD9E69B-939D-49EA-AA20-78000D752C68}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="134"
+              DTS:ObjectName="hr_entrg"
+              DTS:DTSID="{0D07C042-AC2F-41D5-871D-143BCDBBE4F8}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="131"
+              DTS:Precision="28"
+              DTS:Scale="6"
+              DTS:ObjectName="d_entrg"
+              DTS:DTSID="{C40B10E7-AAD6-4609-B0F8-F52D775A8220}"
+              DTS:CreationName="" />
+          </DTS:CacheColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\TProc_Cache_Postgres"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{e43f51a9-f78d-4fe8-aa87-07a6a22ed7d2}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TProc_Cache_Postgres"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\TProc_Cache_Postgres\Cache Transform"
+              componentClassID="Microsoft.Cache"
+              contactInfo="Cache Transform;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Writes data to a cache (a .caw file) with the Cache Connection Manager. Reuse the cache between multiple Lookup transforms to reduce database load. Share the cache to reduce memory usage. Note: cache data is stored in clear text and not recommended for sensitive data."
+              name="Cache Transform"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TProc_Cache_Postgres\Cache Transform.Connections[CacheConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Cache Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Cache Connection Manager]"
+                  description="The connection used to access the cache."
+                  name="CacheConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TProc_Cache_Postgres\Cache Transform.Inputs[Cache Input]"
+                  hasSideEffects="true"
+                  name="Cache Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TProc_Cache_Postgres\Cache Transform.Inputs[Cache Input].Columns[id_ped]"
+                      cachedDataType="i4"
+                      cachedName="id_ped"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[id_ped]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">id_ped</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TProc_Cache_Postgres\Cache Transform.Inputs[Cache Input].Columns[dt_expd]"
+                      cachedDataType="dbDate"
+                      cachedName="dt_expd"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[dt_expd]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">dt_expd</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TProc_Cache_Postgres\Cache Transform.Inputs[Cache Input].Columns[hr_expd]"
+                      cachedDataType="dbTime"
+                      cachedName="hr_expd"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[hr_expd]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">hr_expd</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TProc_Cache_Postgres\Cache Transform.Inputs[Cache Input].Columns[dt_entrg]"
+                      cachedDataType="dbDate"
+                      cachedName="dt_entrg"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[dt_entrg]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">dt_entrg</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TProc_Cache_Postgres\Cache Transform.Inputs[Cache Input].Columns[t_entrg]"
+                      cachedDataType="numeric"
+                      cachedName="t_entrg"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[t_entrg]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">t_entrg</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TProc_Cache_Postgres\Cache Transform.Inputs[Cache Input].Columns[vlr_tx_entrg]"
+                      cachedDataType="numeric"
+                      cachedName="vlr_tx_entrg"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[vlr_tx_entrg]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">vlr_tx_entrg</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TProc_Cache_Postgres\Cache Transform.Inputs[Cache Input].Columns[d_entrg]"
+                      cachedDataType="numeric"
+                      cachedName="d_entrg"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[d_entrg]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">d_entrg</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TProc_Cache_Postgres\Cache Transform.Inputs[Cache Input].Columns[hr_entrg]"
+                      cachedDataType="dbTime"
+                      cachedName="hr_entrg"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[hr_entrg]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">hr_entrg</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TProc_Cache_Postgres\Cache Transform.Outputs[Cache Output]"
+                  name="Cache Output"
+                  synchronousInputId="Package\TProc_Cache_Postgres\Cache Transform.Inputs[Cache Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TProc_Cache_Postgres\TProc (Postgres)"
+              componentClassID="Attunity.SSISODBCSrc"
+              description="ODBC Source"
+              name="TProc (Postgres)"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tproc"</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TProc_Cache_Postgres\TProc (Postgres).Connections[ODBCConnection]"
+                  connectionManagerID="{550A30FC-B0EF-4A25-919B-ADF5354C421B}:invalid"
+                  connectionManagerRefId="{550A30FC-B0EF-4A25-919B-ADF5354C421B}:invalid"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[id_ped]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_ped]"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[id_ped]"
+                      name="id_ped" />
+                    <outputColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[dt_expd]"
+                      dataType="dbDate"
+                      externalMetadataColumnId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[dt_expd]"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[dt_expd]"
+                      name="dt_expd" />
+                    <outputColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[hr_expd]"
+                      dataType="dbTime"
+                      externalMetadataColumnId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[hr_expd]"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[hr_expd]"
+                      name="hr_expd" />
+                    <outputColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[dt_entrg]"
+                      dataType="dbDate"
+                      externalMetadataColumnId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[dt_entrg]"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[dt_entrg]"
+                      name="dt_entrg" />
+                    <outputColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[t_entrg]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[t_entrg]"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[t_entrg]"
+                      name="t_entrg"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[vlr_tx_entrg]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[vlr_tx_entrg]"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[vlr_tx_entrg]"
+                      name="vlr_tx_entrg"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[hr_entrg]"
+                      dataType="dbTime"
+                      externalMetadataColumnId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[hr_entrg]"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[hr_entrg]"
+                      name="hr_entrg" />
+                    <outputColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[d_entrg]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[d_entrg]"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].Columns[d_entrg]"
+                      name="d_entrg"
+                      precision="28"
+                      scale="6" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_ped]"
+                      dataType="i4"
+                      name="id_ped" />
+                    <externalMetadataColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[dt_expd]"
+                      dataType="dbDate"
+                      name="dt_expd" />
+                    <externalMetadataColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[hr_expd]"
+                      dataType="dbTime"
+                      name="hr_expd" />
+                    <externalMetadataColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[dt_entrg]"
+                      dataType="dbDate"
+                      name="dt_entrg" />
+                    <externalMetadataColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[t_entrg]"
+                      dataType="numeric"
+                      name="t_entrg"
+                      precision="28"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[vlr_tx_entrg]"
+                      dataType="numeric"
+                      name="vlr_tx_entrg"
+                      precision="28"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[hr_entrg]"
+                      dataType="dbTime"
+                      name="hr_entrg" />
+                    <externalMetadataColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[d_entrg]"
+                      dataType="numeric"
+                      name="d_entrg"
+                      precision="28"
+                      scale="6" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[id_ped]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_ped]"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[id_ped]"
+                      name="id_ped" />
+                    <outputColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[dt_expd]"
+                      dataType="dbDate"
+                      externalMetadataColumnId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[dt_expd]"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[dt_expd]"
+                      name="dt_expd" />
+                    <outputColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[hr_expd]"
+                      dataType="dbTime"
+                      externalMetadataColumnId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[hr_expd]"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[hr_expd]"
+                      name="hr_expd" />
+                    <outputColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[dt_entrg]"
+                      dataType="dbDate"
+                      externalMetadataColumnId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[dt_entrg]"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[dt_entrg]"
+                      name="dt_entrg" />
+                    <outputColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[t_entrg]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[t_entrg]"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[t_entrg]"
+                      name="t_entrg"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[vlr_tx_entrg]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[vlr_tx_entrg]"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[vlr_tx_entrg]"
+                      name="vlr_tx_entrg"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[hr_entrg]"
+                      dataType="dbTime"
+                      externalMetadataColumnId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[hr_entrg]"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[hr_entrg]"
+                      name="hr_entrg" />
+                    <outputColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[d_entrg]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output].ExternalColumns[d_entrg]"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[d_entrg]"
+                      name="d_entrg"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TProc_Cache_Postgres.Paths[ODBC Source Output]"
+              endId="Package\TProc_Cache_Postgres\Cache Transform.Inputs[Cache Input]"
+              name="ODBC Source Output"
+              startId="Package\TProc_Cache_Postgres\TProc (Postgres).Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TProdt"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{e93199c5-6329-4269-87cb-702a5b96130e}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TProdt"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\TProdt\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\TProdt\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TProdt\Data Conversion.Inputs[Data Conversion Input].Columns[hr_expd]"
+                      cachedDataType="dbTime2"
+                      cachedName="hr_expd"
+                      cachedScale="7"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[hr_expd]" />
+                    <inputColumn
+                      refId="Package\TProdt\Data Conversion.Inputs[Data Conversion Input].Columns[hr_entrg]"
+                      cachedDataType="dbTime2"
+                      cachedName="hr_entrg"
+                      cachedScale="7"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[hr_entrg]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TProdt\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\TProdt\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TProdt\Data Conversion.Outputs[Data Conversion Output].Columns[hr_expd_conv]"
+                      dataType="dbTime"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\TProdt\Data Conversion.Outputs[Data Conversion Output].Columns[hr_expd_conv]"
+                      name="hr_expd_conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[hr_expd]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TProdt\Data Conversion.Outputs[Data Conversion Output].Columns[hr_entrg_conv]"
+                      dataType="dbTime"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\TProdt\Data Conversion.Outputs[Data Conversion Output].Columns[hr_entrg_conv]"
+                      name="hr_entrg_conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[hr_entrg]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TProdt\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\TProdt\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TProdt\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TProdt\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TProdt\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TProdt\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TProdt\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from () [refTable]
+where [refTable].[id_ped] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id_ped" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dt_expd" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hr_expd" dataType="DT_DBTIME" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dt_entrg" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="t_entrg" dataType="DT_NUMERIC" length="0" precision="28" scale="6" codePage="0"/&gt;&lt;referenceColumn name="vlr_tx_entrg" dataType="DT_NUMERIC" length="0" precision="28" scale="6" codePage="0"/&gt;&lt;referenceColumn name="hr_entrg" dataType="DT_DBTIME" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="d_entrg" dataType="DT_NUMERIC" length="0" precision="28" scale="6" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[id_ped]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TProdt\Lookup.Connections[CacheConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Cache Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Cache Connection Manager]"
+                  description="Connection manager used to access lookup data."
+                  name="CacheConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TProdt\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TProdt\Lookup.Inputs[Lookup Input].Columns[id_ped]"
+                      cachedDataType="i4"
+                      cachedName="id_ped"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[id_ped]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">id_ped</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TProdt\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\TProdt\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TProdt\Lookup.Outputs[Lookup Match Output].Columns[id_ped]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\TProdt\Lookup.Outputs[Lookup Match Output].Columns[id_ped]"
+                      name="id_ped"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">id_ped</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TProdt\Lookup.Outputs[Lookup Match Output].Columns[dt_expd]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\TProdt\Lookup.Outputs[Lookup Match Output].Columns[dt_expd]"
+                      name="dt_expd"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">dt_expd</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TProdt\Lookup.Outputs[Lookup Match Output].Columns[hr_expd]"
+                      dataType="dbTime"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\TProdt\Lookup.Outputs[Lookup Match Output].Columns[hr_expd]"
+                      name="hr_expd"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">hr_expd</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TProdt\Lookup.Outputs[Lookup Match Output].Columns[dt_entrg]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\TProdt\Lookup.Outputs[Lookup Match Output].Columns[dt_entrg]"
+                      name="dt_entrg"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">dt_entrg</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TProdt\Lookup.Outputs[Lookup Match Output].Columns[hr_entrg]"
+                      dataType="dbTime"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\TProdt\Lookup.Outputs[Lookup Match Output].Columns[hr_entrg]"
+                      name="hr_entrg"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">hr_entrg</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TProdt\Lookup.Outputs[Lookup Match Output].Columns[t_entrg]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\TProdt\Lookup.Outputs[Lookup Match Output].Columns[t_entrg]"
+                      name="t_entrg"
+                      precision="28"
+                      scale="6"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">t_entrg</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TProdt\Lookup.Outputs[Lookup Match Output].Columns[d_entrg]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\TProdt\Lookup.Outputs[Lookup Match Output].Columns[d_entrg]"
+                      name="d_entrg"
+                      precision="28"
+                      scale="6"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">d_entrg</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TProdt\Lookup.Outputs[Lookup Match Output].Columns[vlr_tx_entrg]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\TProdt\Lookup.Outputs[Lookup Match Output].Columns[vlr_tx_entrg]"
+                      name="vlr_tx_entrg"
+                      precision="28"
+                      scale="6"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">vlr_tx_entrg</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TProdt\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\TProdt\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TProdt\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\TProdt\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TProdt\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TProdt\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TProdt\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TProdt\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TProdt\ODBC Destination"
+              componentClassID="Attunity.SSISODBCDst"
+              description="ODBC Destination"
+              name="ODBC Destination"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tproc"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of rows inserted under the same transaction."
+                  expressionType="Notify"
+                  name="TransactionSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                  expressionType="Notify"
+                  name="InsertMethod">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TProdt\ODBC Destination.Connections[ODBCConnection]"
+                  connectionManagerID="{550A30FC-B0EF-4A25-919B-ADF5354C421B}:invalid"
+                  connectionManagerRefId="{550A30FC-B0EF-4A25-919B-ADF5354C421B}:invalid"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ODBC Destination Input"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].Columns[id_ped]"
+                      cachedDataType="i4"
+                      cachedName="id_ped"
+                      externalMetadataColumnId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[id_ped]"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[id_ped]" />
+                    <inputColumn
+                      refId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].Columns[dt_expd]"
+                      cachedDataType="dbDate"
+                      cachedName="dt_expd"
+                      externalMetadataColumnId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dt_expd]"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[dt_expd]" />
+                    <inputColumn
+                      refId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].Columns[dt_entrg]"
+                      cachedDataType="dbDate"
+                      cachedName="dt_entrg"
+                      externalMetadataColumnId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dt_entrg]"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[dt_entrg]" />
+                    <inputColumn
+                      refId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].Columns[t_entrg]"
+                      cachedDataType="numeric"
+                      cachedName="t_entrg"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[t_entrg]"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[t_entrg]" />
+                    <inputColumn
+                      refId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].Columns[d_entrg]"
+                      cachedDataType="numeric"
+                      cachedName="d_entrg"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[d_entrg]"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[d_entrg]" />
+                    <inputColumn
+                      refId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].Columns[vlr_tx_entrg]"
+                      cachedDataType="cy"
+                      cachedName="vlr_tx_entrg"
+                      externalMetadataColumnId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[vlr_tx_entrg]"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[vlr_tx_entrg]" />
+                    <inputColumn
+                      refId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].Columns[hr_entrg_conv]"
+                      cachedDataType="dbTime"
+                      cachedName="hr_entrg_conv"
+                      externalMetadataColumnId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[hr_entrg]"
+                      lineageId="Package\TProdt\Data Conversion.Outputs[Data Conversion Output].Columns[hr_entrg_conv]" />
+                    <inputColumn
+                      refId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].Columns[hr_expd_conv]"
+                      cachedDataType="dbTime"
+                      cachedName="hr_expd_conv"
+                      externalMetadataColumnId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[hr_expd]"
+                      lineageId="Package\TProdt\Data Conversion.Outputs[Data Conversion Output].Columns[hr_expd_conv]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[id_ped]"
+                      dataType="i4"
+                      name="id_ped" />
+                    <externalMetadataColumn
+                      refId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dt_expd]"
+                      dataType="dbDate"
+                      name="dt_expd" />
+                    <externalMetadataColumn
+                      refId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[hr_expd]"
+                      dataType="dbTime"
+                      name="hr_expd" />
+                    <externalMetadataColumn
+                      refId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dt_entrg]"
+                      dataType="dbDate"
+                      name="dt_entrg" />
+                    <externalMetadataColumn
+                      refId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[t_entrg]"
+                      dataType="numeric"
+                      name="t_entrg"
+                      precision="28"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[vlr_tx_entrg]"
+                      dataType="numeric"
+                      name="vlr_tx_entrg"
+                      precision="28"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[hr_entrg]"
+                      dataType="dbTime"
+                      name="hr_entrg" />
+                    <externalMetadataColumn
+                      refId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[d_entrg]"
+                      dataType="numeric"
+                      name="d_entrg"
+                      precision="28"
+                      scale="6" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Destination Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[id_ped]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[id_ped]"
+                      lineageId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[id_ped]"
+                      name="id_ped" />
+                    <outputColumn
+                      refId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[dt_expd]"
+                      dataType="dbDate"
+                      externalMetadataColumnId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dt_expd]"
+                      lineageId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[dt_expd]"
+                      name="dt_expd" />
+                    <outputColumn
+                      refId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[hr_expd]"
+                      dataType="dbTime"
+                      externalMetadataColumnId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[hr_expd]"
+                      lineageId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[hr_expd]"
+                      name="hr_expd" />
+                    <outputColumn
+                      refId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[dt_entrg]"
+                      dataType="dbDate"
+                      externalMetadataColumnId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dt_entrg]"
+                      lineageId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[dt_entrg]"
+                      name="dt_entrg" />
+                    <outputColumn
+                      refId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[t_entrg]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[t_entrg]"
+                      lineageId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[t_entrg]"
+                      name="t_entrg"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[vlr_tx_entrg]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[vlr_tx_entrg]"
+                      lineageId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[vlr_tx_entrg]"
+                      name="vlr_tx_entrg"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[hr_entrg]"
+                      dataType="dbTime"
+                      externalMetadataColumnId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[hr_entrg]"
+                      lineageId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[hr_entrg]"
+                      name="hr_entrg" />
+                    <outputColumn
+                      refId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[d_entrg]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[d_entrg]"
+                      lineageId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[d_entrg]"
+                      name="d_entrg"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TProdt\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TProdt\TProc (SQL Server)"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="TProc (SQL Server)"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TProc]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TProdt\TProc (SQL Server).Connections[OleDbConnection]"
+                  connectionManagerID="{15321D78-112F-494A-AAFA-167EC9413012}:invalid"
+                  connectionManagerRefId="{15321D78-112F-494A-AAFA-167EC9413012}:invalid"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[id_ped]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[id_ped]"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[id_ped]"
+                      name="id_ped"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[dt_expd]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[dt_expd]"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[dt_expd]"
+                      name="dt_expd"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[hr_expd]"
+                      dataType="dbTime2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[hr_expd]"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[hr_expd]"
+                      name="hr_expd"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[dt_entrg]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[dt_entrg]"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[dt_entrg]"
+                      name="dt_entrg"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[hr_entrg]"
+                      dataType="dbTime2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[hr_entrg]"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[hr_entrg]"
+                      name="hr_entrg"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[t_entrg]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[t_entrg]"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[t_entrg]"
+                      name="t_entrg"
+                      precision="18"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[d_entrg]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[d_entrg]"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[d_entrg]"
+                      name="d_entrg"
+                      precision="18"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[vlr_tx_entrg]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[vlr_tx_entrg]"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].Columns[vlr_tx_entrg]"
+                      name="vlr_tx_entrg"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[id_ped]"
+                      dataType="i4"
+                      name="id_ped" />
+                    <externalMetadataColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[dt_expd]"
+                      dataType="dbDate"
+                      name="dt_expd" />
+                    <externalMetadataColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[hr_expd]"
+                      dataType="dbTime2"
+                      name="hr_expd"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[dt_entrg]"
+                      dataType="dbDate"
+                      name="dt_entrg" />
+                    <externalMetadataColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[hr_entrg]"
+                      dataType="dbTime2"
+                      name="hr_entrg"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[t_entrg]"
+                      dataType="numeric"
+                      name="t_entrg"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[d_entrg]"
+                      dataType="numeric"
+                      name="d_entrg"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[vlr_tx_entrg]"
+                      dataType="cy"
+                      name="vlr_tx_entrg" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[id_ped]"
+                      dataType="i4"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[id_ped]"
+                      name="id_ped" />
+                    <outputColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[dt_expd]"
+                      dataType="dbDate"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[dt_expd]"
+                      name="dt_expd" />
+                    <outputColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[hr_expd]"
+                      dataType="dbTime2"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[hr_expd]"
+                      name="hr_expd"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[dt_entrg]"
+                      dataType="dbDate"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[dt_entrg]"
+                      name="dt_entrg" />
+                    <outputColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[hr_entrg]"
+                      dataType="dbTime2"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[hr_entrg]"
+                      name="hr_entrg"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[t_entrg]"
+                      dataType="numeric"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[t_entrg]"
+                      name="t_entrg"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[d_entrg]"
+                      dataType="numeric"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[d_entrg]"
+                      name="d_entrg"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[vlr_tx_entrg]"
+                      dataType="cy"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[vlr_tx_entrg]"
+                      name="vlr_tx_entrg" />
+                    <outputColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TProdt.Paths[Data Conversion Output]"
+              endId="Package\TProdt\Lookup.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\TProdt\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\TProdt.Paths[Lookup No Match Output]"
+              endId="Package\TProdt\ODBC Destination.Inputs[ODBC Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\TProdt\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\TProdt.Paths[OLE DB Source Output]"
+              endId="Package\TProdt\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\TProdt\TProc (SQL Server).Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{8a7ea4f8-32ee-4307-a803-9bcc54787d92}"
+      DTS:From="Package\TProc_Cache_Postgres"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\TProdt" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="112,42"
+          Id="Package\TProdt"
+          TopLeft="310,198" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\TProc_Cache_Postgres"
+          TopLeft="264,106" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="364,148">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\TProdt">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="176,42"
+          Id="Package\TProdt\TProc (SQL Server)"
+          TopLeft="226,45" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\TProdt\Data Conversion"
+          TopLeft="236,111" />
+        <EdgeLayout
+          Id="Package\TProdt.Paths[OLE DB Source Output]"
+          TopLeft="315.25,87">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24"
+              Start="0,0"
+              End="0,16.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="115,42"
+          Id="Package\TProdt\Lookup"
+          TopLeft="255,194" />
+        <EdgeLayout
+          Id="Package\TProdt.Paths[Data Conversion Output]"
+          TopLeft="314.5,153">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="169,42"
+          Id="Package\TProdt\ODBC Destination"
+          TopLeft="223,282" />
+        <EdgeLayout
+          Id="Package\TProdt.Paths[Lookup No Match Output]"
+          TopLeft="310,236">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,13.4453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TProdt\TProc (SQL Server)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\TProc_Cache_Postgres">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="162,42"
+          Id="Package\TProc_Cache_Postgres\TProc (Postgres)"
+          TopLeft="275,91" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\TProc_Cache_Postgres\Cache Transform"
+          TopLeft="274,184" />
+        <EdgeLayout
+          Id="Package\TProc_Cache_Postgres.Paths[ODBC Source Output]"
+          TopLeft="356,133">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TProc_Cache_Postgres\TProc (Postgres)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TProdt\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TProdt\ODBC Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

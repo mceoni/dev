@@ -1,0 +1,1072 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/5/2023 4:31:39 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-I7E2QRQ"
+  DTS:CreatorName="DESKTOP-I7E2QRQ\kln"
+  DTS:DTSID="{D6F2230E-A2BF-4925-819F-E5CF13BE6C1E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="TIngrd"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{11C50443-927C-4DB7-A5B7-4ECA32C01EC1}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TIngrd_Cache]"
+      DTS:CreationName="CACHE"
+      DTS:DTSID="{6C8A5DCF-EE5B-4EE5-B8D9-7CEE7847A480}"
+      DTS:ObjectName="TIngrd_Cache">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager>
+          <DTS:CacheColumns>
+            <DTS:CacheColumn
+              DTS:DataType="3"
+              DTS:IndexPosition="1"
+              DTS:ObjectName="id_ingrd"
+              DTS:DTSID="{EC3D8EB4-5A6F-44FD-A60B-33D7DC65F818}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="130"
+              DTS:Length="15"
+              DTS:ObjectName="nm_ingrd"
+              DTS:DTSID="{C4FEA9F9-532F-464B-A215-F541A8A6EF53}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="131"
+              DTS:Precision="28"
+              DTS:Scale="6"
+              DTS:ObjectName="vlr_ingrd"
+              DTS:DTSID="{A5D1CDD3-00CF-440C-9751-D71E80834560}"
+              DTS:CreationName="" />
+          </DTS:CacheColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\TIngrd"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3243D7DB-4519-4ABC-B98C-B79EAC2329EF}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TIngrd"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\TIngrd\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from () [refTable]
+where [refTable].[id_ingrd] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id_ingrd" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nm_ingrd" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="vlr_ingrd" dataType="DT_NUMERIC" length="0" precision="28" scale="6" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\TIngrd\222:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TIngrd\Lookup.Connections[CacheConnection]"
+                  connectionManagerID="Package.ConnectionManagers[TIngrd_Cache]"
+                  connectionManagerRefId="Package.ConnectionManagers[TIngrd_Cache]"
+                  description="Connection manager used to access lookup data."
+                  name="CacheConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TIngrd\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TIngrd\Lookup.Inputs[Lookup Input].Columns[id_ingrd]"
+                      cachedDataType="i4"
+                      cachedName="id_ingrd"
+                      lineageId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output].Columns[id_ingrd]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">id_ingrd</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TIngrd\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\TIngrd\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TIngrd\Lookup.Outputs[Lookup Match Output].Columns[id_ingrd]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\TIngrd\Lookup.Outputs[Lookup Match Output].Columns[id_ingrd]"
+                      name="id_ingrd"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">id_ingrd</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TIngrd\Lookup.Outputs[Lookup Match Output].Columns[nm_ingrd]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="15"
+                      lineageId="Package\TIngrd\Lookup.Outputs[Lookup Match Output].Columns[nm_ingrd]"
+                      name="nm_ingrd"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">nm_ingrd</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TIngrd\Lookup.Outputs[Lookup Match Output].Columns[vlr_ingrd]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\TIngrd\Lookup.Outputs[Lookup Match Output].Columns[vlr_ingrd]"
+                      name="vlr_ingrd"
+                      precision="28"
+                      scale="6"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">vlr_ingrd</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TIngrd\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\TIngrd\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TIngrd\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\TIngrd\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TIngrd\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TIngrd\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TIngrd\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TIngrd\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TIngrd\TIngrd (Postgres)"
+              componentClassID="Attunity.SSISODBCDst"
+              description="ODBC Destination"
+              name="TIngrd (Postgres)"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tingrd"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of rows inserted under the same transaction."
+                  expressionType="Notify"
+                  name="TransactionSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                  expressionType="Notify"
+                  name="InsertMethod">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TIngrd\TIngrd (Postgres).Connections[ODBCConnection]"
+                  connectionManagerID="{E94FA4D8-44DA-402C-9895-237914A6F65A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[db_pizzaria.postgres]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TIngrd\TIngrd (Postgres).Inputs[ODBC Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ODBC Destination Input"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TIngrd\TIngrd (Postgres).Inputs[ODBC Destination Input].Columns[id_ingrd]"
+                      cachedDataType="i4"
+                      cachedName="id_ingrd"
+                      externalMetadataColumnId="Package\TIngrd\TIngrd (Postgres).Inputs[ODBC Destination Input].ExternalColumns[id_ingrd]"
+                      lineageId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output].Columns[id_ingrd]" />
+                    <inputColumn
+                      refId="Package\TIngrd\TIngrd (Postgres).Inputs[ODBC Destination Input].Columns[nm_ingrd]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="nm_ingrd"
+                      externalMetadataColumnId="Package\TIngrd\TIngrd (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_ingrd]"
+                      lineageId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output].Columns[nm_ingrd]" />
+                    <inputColumn
+                      refId="Package\TIngrd\TIngrd (Postgres).Inputs[ODBC Destination Input].Columns[vlr_ingrd]"
+                      cachedDataType="numeric"
+                      cachedName="vlr_ingrd"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\TIngrd\TIngrd (Postgres).Inputs[ODBC Destination Input].ExternalColumns[vlr_ingrd]"
+                      lineageId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output].Columns[vlr_ingrd]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TIngrd\TIngrd (Postgres).Inputs[ODBC Destination Input].ExternalColumns[id_ingrd]"
+                      dataType="i4"
+                      name="id_ingrd" />
+                    <externalMetadataColumn
+                      refId="Package\TIngrd\TIngrd (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_ingrd]"
+                      dataType="wstr"
+                      length="15"
+                      name="nm_ingrd" />
+                    <externalMetadataColumn
+                      refId="Package\TIngrd\TIngrd (Postgres).Inputs[ODBC Destination Input].ExternalColumns[vlr_ingrd]"
+                      dataType="numeric"
+                      name="vlr_ingrd"
+                      precision="28"
+                      scale="6" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TIngrd\TIngrd (Postgres).Outputs[ODBC Destination Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Destination Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TIngrd\TIngrd (Postgres).Outputs[ODBC Destination Error Output].Columns[id_ingrd]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TIngrd\TIngrd (Postgres).Inputs[ODBC Destination Input].ExternalColumns[id_ingrd]"
+                      lineageId="Package\TIngrd\TIngrd (Postgres).Outputs[ODBC Destination Error Output].Columns[id_ingrd]"
+                      name="id_ingrd" />
+                    <outputColumn
+                      refId="Package\TIngrd\TIngrd (Postgres).Outputs[ODBC Destination Error Output].Columns[nm_ingrd]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TIngrd\TIngrd (Postgres).Inputs[ODBC Destination Input].ExternalColumns[nm_ingrd]"
+                      length="15"
+                      lineageId="Package\TIngrd\TIngrd (Postgres).Outputs[ODBC Destination Error Output].Columns[nm_ingrd]"
+                      name="nm_ingrd" />
+                    <outputColumn
+                      refId="Package\TIngrd\TIngrd (Postgres).Outputs[ODBC Destination Error Output].Columns[vlr_ingrd]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\TIngrd\TIngrd (Postgres).Inputs[ODBC Destination Input].ExternalColumns[vlr_ingrd]"
+                      lineageId="Package\TIngrd\TIngrd (Postgres).Outputs[ODBC Destination Error Output].Columns[vlr_ingrd]"
+                      name="vlr_ingrd"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\TIngrd\TIngrd (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TIngrd\TIngrd (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TIngrd\TIngrd (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TIngrd\TIngrd (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TIngrd\TProc (Stage)"
+              componentClassID="Attunity.SSISODBCSrc"
+              description="ODBC Source"
+              name="TProc (Stage)"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tingrd"</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TIngrd\TProc (Stage).Connections[ODBCConnection]"
+                  connectionManagerID="{B8C7FFE1-A086-4AAD-84FC-A8F41F0AC891}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[db_stage_table]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output].Columns[id_ingrd]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output].ExternalColumns[id_ingrd]"
+                      lineageId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output].Columns[id_ingrd]"
+                      name="id_ingrd" />
+                    <outputColumn
+                      refId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output].Columns[nm_ingrd]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_ingrd]"
+                      length="15"
+                      lineageId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output].Columns[nm_ingrd]"
+                      name="nm_ingrd" />
+                    <outputColumn
+                      refId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output].Columns[vlr_ingrd]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output].ExternalColumns[vlr_ingrd]"
+                      lineageId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output].Columns[vlr_ingrd]"
+                      name="vlr_ingrd"
+                      precision="28"
+                      scale="6" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output].ExternalColumns[id_ingrd]"
+                      dataType="i4"
+                      name="id_ingrd" />
+                    <externalMetadataColumn
+                      refId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_ingrd]"
+                      dataType="wstr"
+                      length="15"
+                      name="nm_ingrd" />
+                    <externalMetadataColumn
+                      refId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output].ExternalColumns[vlr_ingrd]"
+                      dataType="numeric"
+                      name="vlr_ingrd"
+                      precision="28"
+                      scale="6" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Error Output].Columns[id_ingrd]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output].ExternalColumns[id_ingrd]"
+                      lineageId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Error Output].Columns[id_ingrd]"
+                      name="id_ingrd" />
+                    <outputColumn
+                      refId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Error Output].Columns[nm_ingrd]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output].ExternalColumns[nm_ingrd]"
+                      length="15"
+                      lineageId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Error Output].Columns[nm_ingrd]"
+                      name="nm_ingrd" />
+                    <outputColumn
+                      refId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Error Output].Columns[vlr_ingrd]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output].ExternalColumns[vlr_ingrd]"
+                      lineageId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Error Output].Columns[vlr_ingrd]"
+                      name="vlr_ingrd"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TIngrd.Paths[Lookup No Match Output]"
+              endId="Package\TIngrd\TIngrd (Postgres).Inputs[ODBC Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\TIngrd\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\TIngrd.Paths[ODBC Source Output]"
+              endId="Package\TIngrd\Lookup.Inputs[Lookup Input]"
+              name="ODBC Source Output"
+              startId="Package\TIngrd\TProc (Stage).Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TIngrd_Cache"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5C891632-2560-48C1-9C0D-30719ECF2021}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TIngrd_Cache"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\TIngrd_Cache\Cache Transform"
+              componentClassID="Microsoft.Cache"
+              contactInfo="Cache Transform;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Writes data to a cache (a .caw file) with the Cache Connection Manager. Reuse the cache between multiple Lookup transforms to reduce database load. Share the cache to reduce memory usage. Note: cache data is stored in clear text and not recommended for sensitive data."
+              name="Cache Transform"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TIngrd_Cache\Cache Transform.Connections[CacheConnection]"
+                  connectionManagerID="Package.ConnectionManagers[TIngrd_Cache]"
+                  connectionManagerRefId="Package.ConnectionManagers[TIngrd_Cache]"
+                  description="The connection used to access the cache."
+                  name="CacheConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TIngrd_Cache\Cache Transform.Inputs[Cache Input]"
+                  hasSideEffects="true"
+                  name="Cache Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TIngrd_Cache\Cache Transform.Inputs[Cache Input].Columns[id_ingrd]"
+                      cachedDataType="i4"
+                      cachedName="id_ingrd"
+                      lineageId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output].Columns[id_ingrd]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">id_ingrd</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TIngrd_Cache\Cache Transform.Inputs[Cache Input].Columns[nm_ingrd]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="nm_ingrd"
+                      lineageId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output].Columns[nm_ingrd]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">nm_ingrd</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TIngrd_Cache\Cache Transform.Inputs[Cache Input].Columns[vlr_ingrd]"
+                      cachedDataType="numeric"
+                      cachedName="vlr_ingrd"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      lineageId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output].Columns[vlr_ingrd]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">vlr_ingrd</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TIngrd_Cache\Cache Transform.Outputs[Cache Output]"
+                  name="Cache Output"
+                  synchronousInputId="Package\TIngrd_Cache\Cache Transform.Inputs[Cache Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TIngrd_Cache\TIngrd (Postgres)"
+              componentClassID="Attunity.SSISODBCSrc"
+              description="ODBC Source"
+              name="TIngrd (Postgres)"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tingrd"</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TIngrd_Cache\TIngrd (Postgres).Connections[ODBCConnection]"
+                  connectionManagerID="{E94FA4D8-44DA-402C-9895-237914A6F65A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[db_pizzaria.postgres]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output].Columns[id_ingrd]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_ingrd]"
+                      lineageId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output].Columns[id_ingrd]"
+                      name="id_ingrd" />
+                    <outputColumn
+                      refId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output].Columns[nm_ingrd]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_ingrd]"
+                      length="15"
+                      lineageId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output].Columns[nm_ingrd]"
+                      name="nm_ingrd" />
+                    <outputColumn
+                      refId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output].Columns[vlr_ingrd]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output].ExternalColumns[vlr_ingrd]"
+                      lineageId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output].Columns[vlr_ingrd]"
+                      name="vlr_ingrd"
+                      precision="28"
+                      scale="6" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_ingrd]"
+                      dataType="i4"
+                      name="id_ingrd" />
+                    <externalMetadataColumn
+                      refId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_ingrd]"
+                      dataType="wstr"
+                      length="15"
+                      name="nm_ingrd" />
+                    <externalMetadataColumn
+                      refId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output].ExternalColumns[vlr_ingrd]"
+                      dataType="numeric"
+                      name="vlr_ingrd"
+                      precision="28"
+                      scale="6" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Error Output].Columns[id_ingrd]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_ingrd]"
+                      lineageId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Error Output].Columns[id_ingrd]"
+                      name="id_ingrd" />
+                    <outputColumn
+                      refId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Error Output].Columns[nm_ingrd]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output].ExternalColumns[nm_ingrd]"
+                      length="15"
+                      lineageId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Error Output].Columns[nm_ingrd]"
+                      name="nm_ingrd" />
+                    <outputColumn
+                      refId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Error Output].Columns[vlr_ingrd]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output].ExternalColumns[vlr_ingrd]"
+                      lineageId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Error Output].Columns[vlr_ingrd]"
+                      name="vlr_ingrd"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TIngrd_Cache.Paths[ODBC Source Output]"
+              endId="Package\TIngrd_Cache\Cache Transform.Inputs[Cache Input]"
+              name="ODBC Source Output"
+              startId="Package\TIngrd_Cache\TIngrd (Postgres).Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{78B6D79D-DB19-4232-9205-5C883414E0D7}"
+      DTS:From="Package\TIngrd_Cache"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\TIngrd" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="111,42"
+          Id="Package\TIngrd"
+          TopLeft="270,163" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\TIngrd_Cache"
+          TopLeft="246,91" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="323,133">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\TIngrd">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\TIngrd\TIngrd (Postgres)"
+          TopLeft="264,258" />
+        <NodeLayout
+          Size="115,42"
+          Id="Package\TIngrd\Lookup"
+          TopLeft="291,166" />
+        <EdgeLayout
+          Id="Package\TIngrd.Paths[Lookup No Match Output]"
+          TopLeft="347.25,208">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,15.4453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="147,42"
+          Id="Package\TIngrd\TProc (Stage)"
+          TopLeft="279,81" />
+        <EdgeLayout
+          Id="Package\TIngrd.Paths[ODBC Source Output]"
+          TopLeft="350.5,123">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TIngrd\TIngrd (Postgres)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TIngrd\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\TIngrd_Cache">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\TIngrd_Cache\TIngrd (Postgres)"
+          TopLeft="268,64" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\TIngrd_Cache\Cache Transform"
+          TopLeft="269,171" />
+        <EdgeLayout
+          Id="Package\TIngrd_Cache.Paths[ODBC Source Output]"
+          TopLeft="350.5,106">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TIngrd_Cache\TIngrd (Postgres)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TIngrd\TProc (Stage)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

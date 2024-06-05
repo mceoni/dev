@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="192.168.0.3.db_pizzaria.postgres"
+  DTS:DTSID="{5A5F844A-1C7B-434C-8C5C-6504E18092E3}"
+  DTS:CreationName="ODBC">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="server=192.168.0.3;uid=postgres;Driver={PostgreSQL Unicode(x64)};port=5432;database=db_pizzaria;">
+      <DTS:Password
+        DTS:Name="pwd"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvwdAOC+6UEKLIWrkcIybLgAAAAACAAAAAAAQZgAAAAEAACAAAAC97wZY8Jr18S0MyhFiheAvoullnXy+HsUvhnylYoEA3wAAAAAOgAAAAAIAACAAAACVEm+/7Q1VMF3lYcA0Mq3lVRjtncN5IBmpDGS9TlgiqHAAAAD3y8dBXDf0ToOZ8IV0ZV2fnv9JDdrB8qIeT9KPBu2O7I8DHg47ZWy4Lr1BAgCRVRqsQqCt3fFfdNTP3LzmyPcbAmtK5tbTsoXVEXGNCxuMXDb3068VLIIC77BGAS/wHo52IPAXnH3+nVKr1RzWzY1LQAAAAMWWOS2uWJbvpYRFV92N5vcUhw3hB8EH2zLSXHOszTh/BXC8mk0tN3EkeOYdC757aLi5iBUVQz9ww4FfkuR+Xw4=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

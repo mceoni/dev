@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "DB_STAGE_PIZZARIA", "PostgresPizzaria\DB_STAGE_PIZZARIA.dtproj", "{DCAA759E-D17C-4062-91B2-5AEB54AB9866}"
+EndProject
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "DB_Pizzaria", "DB_Pizzaria\DB_Pizzaria.dtproj", "{59290A19-3ECA-419D-BAEE-221F68F0B290}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCAA759E-D17C-4062-91B2-5AEB54AB9866}.Development|Default.ActiveCfg = Development
+		{DCAA759E-D17C-4062-91B2-5AEB54AB9866}.Development|Default.Build.0 = Development
+		{59290A19-3ECA-419D-BAEE-221F68F0B290}.Development|Default.ActiveCfg = Development
+		{59290A19-3ECA-419D-BAEE-221F68F0B290}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F77EB39-AD7D-4A6D-8A22-9975B7474C96}
+	EndGlobalSection
+EndGlobal

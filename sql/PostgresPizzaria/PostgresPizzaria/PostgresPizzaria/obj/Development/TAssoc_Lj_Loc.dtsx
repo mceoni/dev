@@ -1,0 +1,950 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/5/2023 5:08:24 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-I7E2QRQ"
+  DTS:CreatorName="DESKTOP-I7E2QRQ\kln"
+  DTS:DTSID="{BFF886D6-97FF-48E1-9678-DD33EF3D25C0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5228.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="TAssoc_Lj_Loc"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{DC653E47-0236-4179-B0AA-FCB3F16B154E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TAssoc_Lj_Loc_Cache]"
+      DTS:CreationName="CACHE"
+      DTS:DTSID="{B9883C78-2493-4A10-9E31-F868476A3363}"
+      DTS:ObjectName="TAssoc_Lj_Loc_Cache">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager>
+          <DTS:CacheColumns>
+            <DTS:CacheColumn
+              DTS:DataType="3"
+              DTS:IndexPosition="1"
+              DTS:ObjectName="id_lj"
+              DTS:DTSID="{924E02CD-BD23-443E-8262-BF663F007CAF}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="3"
+              DTS:IndexPosition="2"
+              DTS:ObjectName="id_loc"
+              DTS:DTSID="{F4407EFB-F64A-44DD-AF85-71F05C016630}"
+              DTS:CreationName="" />
+          </DTS:CacheColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\TAssoc_Lj_Loc"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3A2BD0E8-217A-4152-B8CA-5DB3AE56C2B5}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TAssoc_Lj_Loc"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\TAssoc_Lj_Loc\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from () [refTable]
+where [refTable].[id_lj] = ? and [refTable].[id_loc] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id_lj" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="id_loc" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Output].Columns[id_lj]};#{Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Output].Columns[id_loc]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TAssoc_Lj_Loc\Lookup.Connections[CacheConnection]"
+                  connectionManagerID="Package.ConnectionManagers[TAssoc_Lj_Loc_Cache]"
+                  connectionManagerRefId="Package.ConnectionManagers[TAssoc_Lj_Loc_Cache]"
+                  description="Connection manager used to access lookup data."
+                  name="CacheConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TAssoc_Lj_Loc\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TAssoc_Lj_Loc\Lookup.Inputs[Lookup Input].Columns[id_lj]"
+                      cachedDataType="i4"
+                      cachedName="id_lj"
+                      lineageId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Output].Columns[id_lj]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">id_lj</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TAssoc_Lj_Loc\Lookup.Inputs[Lookup Input].Columns[id_loc]"
+                      cachedDataType="i4"
+                      cachedName="id_loc"
+                      lineageId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Output].Columns[id_loc]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">id_loc</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TAssoc_Lj_Loc\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\TAssoc_Lj_Loc\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TAssoc_Lj_Loc\Lookup.Outputs[Lookup Match Output].Columns[id_lj]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\TAssoc_Lj_Loc\Lookup.Outputs[Lookup Match Output].Columns[id_lj]"
+                      name="id_lj"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">id_lj</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TAssoc_Lj_Loc\Lookup.Outputs[Lookup Match Output].Columns[id_loc]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\TAssoc_Lj_Loc\Lookup.Outputs[Lookup Match Output].Columns[id_loc]"
+                      name="id_loc"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">id_loc</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TAssoc_Lj_Loc\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\TAssoc_Lj_Loc\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TAssoc_Lj_Loc\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\TAssoc_Lj_Loc\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TAssoc_Lj_Loc\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TAssoc_Lj_Loc\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TAssoc_Lj_Loc\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TAssoc_Lj_Loc\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (Postgres)"
+              componentClassID="Microsoft.SSISODBCDst"
+              contactInfo="ODBC Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="ODBC Destination"
+              name="TAssoc_Lj_Loc (Postgres)"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tassoc_lj_loc"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of rows inserted under the same transaction."
+                  expressionType="Notify"
+                  name="TransactionSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                  expressionType="Notify"
+                  name="InsertMethod">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (Postgres).Connections[ODBCConnection]"
+                  connectionManagerID="{550A30FC-B0EF-4A25-919B-ADF5354C421B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[pizzariaPostgres]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (Postgres).Inputs[ODBC Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ODBC Destination Input"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (Postgres).Inputs[ODBC Destination Input].Columns[id_lj]"
+                      cachedDataType="i4"
+                      cachedName="id_lj"
+                      externalMetadataColumnId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[id_lj]"
+                      lineageId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Output].Columns[id_lj]" />
+                    <inputColumn
+                      refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (Postgres).Inputs[ODBC Destination Input].Columns[id_loc]"
+                      cachedDataType="i4"
+                      cachedName="id_loc"
+                      externalMetadataColumnId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[id_loc]"
+                      lineageId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Output].Columns[id_loc]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[id_lj]"
+                      dataType="i4"
+                      name="id_lj" />
+                    <externalMetadataColumn
+                      refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (Postgres).Inputs[ODBC Destination Input].ExternalColumns[id_loc]"
+                      dataType="i4"
+                      name="id_loc" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ODBC Destination Error Output"
+                  synchronousInputId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (Postgres).Inputs[ODBC Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server)"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="TAssoc_Lj_Loc (SQL Server)"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TAssoc_Lj_Loc]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Connections[OleDbConnection]"
+                  connectionManagerID="{15321D78-112F-494A-AAFA-167EC9413012}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[pizzariaSQLServer]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Output].Columns[id_lj]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[id_lj]"
+                      lineageId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Output].Columns[id_lj]"
+                      name="id_lj"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Output].Columns[id_loc]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[id_loc]"
+                      lineageId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Output].Columns[id_loc]"
+                      name="id_loc"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[id_lj]"
+                      dataType="i4"
+                      name="id_lj" />
+                    <externalMetadataColumn
+                      refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Output].ExternalColumns[id_loc]"
+                      dataType="i4"
+                      name="id_loc" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Error Output].Columns[id_lj]"
+                      dataType="i4"
+                      lineageId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Error Output].Columns[id_lj]"
+                      name="id_lj" />
+                    <outputColumn
+                      refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Error Output].Columns[id_loc]"
+                      dataType="i4"
+                      lineageId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Error Output].Columns[id_loc]"
+                      name="id_loc" />
+                    <outputColumn
+                      refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TAssoc_Lj_Loc.Paths[Lookup No Match Output]"
+              endId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (Postgres).Inputs[ODBC Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\TAssoc_Lj_Loc\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\TAssoc_Lj_Loc.Paths[OLE DB Source Output]"
+              endId="Package\TAssoc_Lj_Loc\Lookup.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server).Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TAssoc_Lj_Loc_Cache"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3AD4058F-EC14-4073-B47E-25B411ABA4D4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TAssoc_Lj_Loc_Cache"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\TAssoc_Lj_Loc_Cache\Cache Transform"
+              componentClassID="Microsoft.Cache"
+              contactInfo="Cache Transform;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Writes data to a cache (a .caw file) with the Cache Connection Manager. Reuse the cache between multiple Lookup transforms to reduce database load. Share the cache to reduce memory usage. Note: cache data is stored in clear text and not recommended for sensitive data."
+              name="Cache Transform"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TAssoc_Lj_Loc_Cache\Cache Transform.Connections[CacheConnection]"
+                  connectionManagerID="Package.ConnectionManagers[TAssoc_Lj_Loc_Cache]"
+                  connectionManagerRefId="Package.ConnectionManagers[TAssoc_Lj_Loc_Cache]"
+                  description="The connection used to access the cache."
+                  name="CacheConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TAssoc_Lj_Loc_Cache\Cache Transform.Inputs[Cache Input]"
+                  hasSideEffects="true"
+                  name="Cache Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TAssoc_Lj_Loc_Cache\Cache Transform.Inputs[Cache Input].Columns[id_lj]"
+                      cachedDataType="i4"
+                      cachedName="id_lj"
+                      lineageId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Output].Columns[id_lj]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">id_lj</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TAssoc_Lj_Loc_Cache\Cache Transform.Inputs[Cache Input].Columns[id_loc]"
+                      cachedDataType="i4"
+                      cachedName="id_loc"
+                      lineageId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Output].Columns[id_loc]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">id_loc</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TAssoc_Lj_Loc_Cache\Cache Transform.Outputs[Cache Output]"
+                  name="Cache Output"
+                  synchronousInputId="Package\TAssoc_Lj_Loc_Cache\Cache Transform.Inputs[Cache Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres)"
+              componentClassID="Microsoft.SSISODBCSrc"
+              contactInfo="ODBC Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="ODBC Source"
+              name="TAssoc_Lj_Loc (Postgres)"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"public"."tassoc_lj_loc"</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Connections[ODBCConnection]"
+                  connectionManagerID="{550A30FC-B0EF-4A25-919B-ADF5354C421B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[pizzariaPostgres]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Output].Columns[id_lj]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_lj]"
+                      lineageId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Output].Columns[id_lj]"
+                      name="id_lj" />
+                    <outputColumn
+                      refId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Output].Columns[id_loc]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_loc]"
+                      lineageId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Output].Columns[id_loc]"
+                      name="id_loc" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_lj]"
+                      dataType="i4"
+                      name="id_lj" />
+                    <externalMetadataColumn
+                      refId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_loc]"
+                      dataType="i4"
+                      name="id_loc" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Error Output].Columns[id_lj]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_lj]"
+                      lineageId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Error Output].Columns[id_lj]"
+                      name="id_lj" />
+                    <outputColumn
+                      refId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Error Output].Columns[id_loc]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Output].ExternalColumns[id_loc]"
+                      lineageId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Error Output].Columns[id_loc]"
+                      name="id_loc" />
+                    <outputColumn
+                      refId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TAssoc_Lj_Loc_Cache.Paths[ODBC Source Output]"
+              endId="Package\TAssoc_Lj_Loc_Cache\Cache Transform.Inputs[Cache Input]"
+              name="ODBC Source Output"
+              startId="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres).Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{56785902-0942-4DB3-B523-BB1457137AA0}"
+      DTS:From="Package\TAssoc_Lj_Loc_Cache"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\TAssoc_Lj_Loc" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\TAssoc_Lj_Loc"
+          TopLeft="240.909090909091,154.545454545455" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\TAssoc_Lj_Loc_Cache"
+          TopLeft="222.222222222222,53.1313131313131" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="318.065656565657,95.1313131313131">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.4141414141414"
+              Start="0,0"
+              End="0,51.9141414141414">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.9141414141414" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\TAssoc_Lj_Loc">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="222,42"
+          Id="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server)"
+          TopLeft="261,56" />
+        <NodeLayout
+          Size="115,42"
+          Id="Package\TAssoc_Lj_Loc\Lookup"
+          TopLeft="307,152" />
+        <EdgeLayout
+          Id="Package\TAssoc_Lj_Loc.Paths[OLE DB Source Output]"
+          TopLeft="368.25,98">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54"
+              Start="0,0"
+              End="0,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="208,42"
+          Id="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (Postgres)"
+          TopLeft="265,248" />
+        <EdgeLayout
+          Id="Package\TAssoc_Lj_Loc.Paths[Lookup No Match Output]"
+          TopLeft="366.75,194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54"
+              Start="0,0"
+              End="0,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,17.4453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (SQL Server)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TAssoc_Lj_Loc\TAssoc_Lj_Loc (Postgres)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TAssoc_Lj_Loc\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\TAssoc_Lj_Loc_Cache">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="208,42"
+          Id="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres)"
+          TopLeft="269,87" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\TAssoc_Lj_Loc_Cache\Cache Transform"
+          TopLeft="297,174" />
+        <EdgeLayout
+          Id="Package\TAssoc_Lj_Loc_Cache.Paths[ODBC Source Output]"
+          TopLeft="376,129">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TAssoc_Lj_Loc_Cache\TAssoc_Lj_Loc (Postgres)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

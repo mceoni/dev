@@ -1,0 +1,2084 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/15/2023 3:17:38 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-I7E2QRQ"
+  DTS:CreatorName="DESKTOP-I7E2QRQ\kln"
+  DTS:DTSID="{9361EC44-BFD9-4A1F-8BE7-15A6E08FF426}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5228.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="TIngrd"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{B41B874C-8849-4F46-AB61-A48A404D0A4D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5E09A6B3-4E9C-4856-A202-D0013E447EED}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Id">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1AD5F4CC-8275-45E2-BE79-CA13D14B7DBD}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Aggregate"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Aggregate"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Aggregate.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Aggregate.Inputs[Aggregate Input 1].Columns[Ingredientes]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Ingredientes"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Ingredientes]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Aggregate.Inputs[Aggregate Input 1].Columns[Valor do Ingrediente]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Valor do Ingrediente"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Valor do Ingrediente]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Aggregate.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[Ingredientes]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[Ingredientes]"
+                      name="Ingredientes">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Ingredientes]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[Valor do Ingrediente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[Valor do Ingrediente]"
+                      name="Valor do Ingrediente">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Valor do Ingrediente]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Data Conversion 3"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion 3"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Data Conversion 3.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion 3.Inputs[Data Conversion Input].Columns[Valor do Ingrediente]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Valor do Ingrediente"
+                      lineageId="Package\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[Valor do Ingrediente]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion 3.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion 3.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion 3.Outputs[Data Conversion Output].Columns[Copy of Valor do Ingrediente]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion 3.Outputs[Data Conversion Output].Columns[Copy of Valor do Ingrediente]"
+                      name="Copy of Valor do Ingrediente"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[Valor do Ingrediente]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion 3.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion 3.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion 3.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion 3.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion 3.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion 3.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Distribuindo cada coluna para uma tabela normalizada"
+              componentClassID="Microsoft.BDD"
+              contactInfo="Balanced Data Distributor;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Evaluates and directs rows in a dataset to multiple destinations."
+              name="Distribuindo cada coluna para uma tabela normalizada">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Distribuindo cada coluna para uma tabela normalizada.Inputs[Balanced Data Distributor Input]"
+                  description="Input to the Balanced Data      Distributor Transformation"
+                  name="Balanced Data Distributor Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Distribuindo cada coluna para uma tabela normalizada.Outputs[Balanced Data Distributor Output 2]"
+                  deleteOutputOnPathDetached="true"
+                  exclusionGroup="1"
+                  name="Balanced Data Distributor Output 2"
+                  synchronousInputId="Package\Data Flow Task\Distribuindo cada coluna para uma tabela normalizada.Inputs[Balanced Data Distributor Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Distribuindo cada coluna para uma tabela normalizada.Outputs[Balanced Data Distributor Output 3]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  exclusionGroup="1"
+                  name="Balanced Data Distributor Output 3"
+                  synchronousInputId="Package\Data Flow Task\Distribuindo cada coluna para uma tabela normalizada.Inputs[Balanced Data Distributor Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[TIngrd]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[TIngrd]) [refTable]
+where [refTable].[nm_ingrd] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id_ingrd" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nm_ingrd" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="vlr_ingrd" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[Ingredientes]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{72D84447-8030-474E-B33D-B4DE4E9837D2}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[192.168.0.106.IntegrationPizzaria.curso]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Lookup.Inputs[Lookup Input].Columns[Ingredientes]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Ingredientes"
+                      lineageId="Package\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[Ingredientes]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">nm_ingrd</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[nm_ingrd]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="15"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[nm_ingrd]"
+                      name="nm_ingrd"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">nm_ingrd</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[vlr_ingrd]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[vlr_ingrd]"
+                      name="vlr_ingrd"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">vlr_ingrd</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Pizzaria"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Pizzaria"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[pizzaria]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">use test1
+
+select * from pizzaria</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Pizzaria.Connections[OleDbConnection]"
+                  connectionManagerID="{72A9D3D8-AF91-4F61-BE70-4B8C8F26EEB0}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[192.168.0.106.test1.curso]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Nome da Loja]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Nome da Loja]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Nome da Loja]"
+                      name="Nome da Loja"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Número do Pedido]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Número do Pedido]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Número do Pedido]"
+                      name="Número do Pedido"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Produto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Produto]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Produto]"
+                      name="Produto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Quantidade de Produtos]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Quantidade de Produtos]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Quantidade de Produtos]"
+                      name="Quantidade de Produtos"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Valor do Produto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Valor do Produto]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Valor do Produto]"
+                      name="Valor do Produto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Ingredientes]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Ingredientes]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Ingredientes]"
+                      name="Ingredientes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Quantidade de Ingredientes]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Quantidade de Ingredientes]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Quantidade de Ingredientes]"
+                      name="Quantidade de Ingredientes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Valor do Ingrediente]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Valor do Ingrediente]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Valor do Ingrediente]"
+                      name="Valor do Ingrediente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Data do Pedido]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Data do Pedido]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Data do Pedido]"
+                      name="Data do Pedido"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Hora do Pedido]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Hora do Pedido]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Hora do Pedido]"
+                      name="Hora do Pedido"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Data da Expedição]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Data da Expedição]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Data da Expedição]"
+                      name="Data da Expedição"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Hora da Expedição]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Hora da Expedição]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Hora da Expedição]"
+                      name="Hora da Expedição"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Data da Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Data da Entrega]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Data da Entrega]"
+                      name="Data da Entrega"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Hora da Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Hora da Entrega]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Hora da Entrega]"
+                      name="Hora da Entrega"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Tempo de Produção]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Tempo de Produção]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Tempo de Produção]"
+                      name="Tempo de Produção"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Tempo de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Tempo de Entrega]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Tempo de Entrega]"
+                      name="Tempo de Entrega"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Cidade da Loja]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Cidade da Loja]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Cidade da Loja]"
+                      name="Cidade da Loja"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Região da Loja]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Região da Loja]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Região da Loja]"
+                      name="Região da Loja"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[CEP da Loja]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[CEP da Loja]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[CEP da Loja]"
+                      name="CEP da Loja"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Endereço da Loja]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Endereço da Loja]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Endereço da Loja]"
+                      name="Endereço da Loja"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Número da Loja]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Número da Loja]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Número da Loja]"
+                      name="Número da Loja"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Cidade de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Cidade de Entrega]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Cidade de Entrega]"
+                      name="Cidade de Entrega"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Região de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Região de Entrega]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Região de Entrega]"
+                      name="Região de Entrega"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[CEP de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[CEP de Entrega]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[CEP de Entrega]"
+                      name="CEP de Entrega"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Endereço de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Endereço de Entrega]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Endereço de Entrega]"
+                      name="Endereço de Entrega"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Número de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Número de Entrega]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Número de Entrega]"
+                      name="Número de Entrega"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Complemento de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Complemento de Entrega]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Complemento de Entrega]"
+                      name="Complemento de Entrega"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Distância da Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Distância da Entrega]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Distância da Entrega]"
+                      name="Distância da Entrega"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Taxa de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Taxa de Entrega]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Taxa de Entrega]"
+                      name="Taxa de Entrega"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Valor Total]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Valor Total]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Valor Total]"
+                      name="Valor Total"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Cidade de Cobrança]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Cidade de Cobrança]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Cidade de Cobrança]"
+                      name="Cidade de Cobrança"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Região de Cobrança]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Região de Cobrança]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Região de Cobrança]"
+                      name="Região de Cobrança"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[CEP de Cobrança]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[CEP de Cobrança]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[CEP de Cobrança]"
+                      name="CEP de Cobrança"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Endereço de Cobrança]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Endereço de Cobrança]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Endereço de Cobrança]"
+                      name="Endereço de Cobrança"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Número de Cobrança]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Número de Cobrança]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Número de Cobrança]"
+                      name="Número de Cobrança"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Complemento de Cobrança]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Complemento de Cobrança]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Complemento de Cobrança]"
+                      name="Complemento de Cobrança"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Complemento da loja]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Complemento da loja]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].Columns[Complemento da loja]"
+                      name="Complemento da loja"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Nome da Loja]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Nome da Loja" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Número do Pedido]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Número do Pedido" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Produto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Produto" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Quantidade de Produtos]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Quantidade de Produtos" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Valor do Produto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Valor do Produto" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Ingredientes]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Ingredientes" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Quantidade de Ingredientes]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Quantidade de Ingredientes" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Valor do Ingrediente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Valor do Ingrediente" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Data do Pedido]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Data do Pedido" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Hora do Pedido]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Hora do Pedido" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Data da Expedição]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Data da Expedição" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Hora da Expedição]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Hora da Expedição" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Data da Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Data da Entrega" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Hora da Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Hora da Entrega" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Tempo de Produção]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Tempo de Produção" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Tempo de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Tempo de Entrega" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Cidade da Loja]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Cidade da Loja" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Região da Loja]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Região da Loja" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[CEP da Loja]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CEP da Loja" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Endereço da Loja]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Endereço da Loja" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Número da Loja]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Número da Loja" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Cidade de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Cidade de Entrega" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Região de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Região de Entrega" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[CEP de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CEP de Entrega" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Endereço de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Endereço de Entrega" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Número de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Número de Entrega" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Complemento de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Complemento de Entrega" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Distância da Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Distância da Entrega" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Taxa de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Taxa de Entrega" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Valor Total]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Valor Total" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Cidade de Cobrança]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Cidade de Cobrança" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Região de Cobrança]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Região de Cobrança" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[CEP de Cobrança]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CEP de Cobrança" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Endereço de Cobrança]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Endereço de Cobrança" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Número de Cobrança]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Número de Cobrança" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Complemento de Cobrança]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Complemento de Cobrança" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output].ExternalColumns[Complemento da loja]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Complemento da loja" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Nome da Loja]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Nome da Loja]"
+                      name="Nome da Loja" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Número do Pedido]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Número do Pedido]"
+                      name="Número do Pedido" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Produto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Produto]"
+                      name="Produto" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Quantidade de Produtos]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Quantidade de Produtos]"
+                      name="Quantidade de Produtos" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Valor do Produto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Valor do Produto]"
+                      name="Valor do Produto" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Ingredientes]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Ingredientes]"
+                      name="Ingredientes" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Quantidade de Ingredientes]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Quantidade de Ingredientes]"
+                      name="Quantidade de Ingredientes" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Valor do Ingrediente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Valor do Ingrediente]"
+                      name="Valor do Ingrediente" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Data do Pedido]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Data do Pedido]"
+                      name="Data do Pedido" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Hora do Pedido]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Hora do Pedido]"
+                      name="Hora do Pedido" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Data da Expedição]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Data da Expedição]"
+                      name="Data da Expedição" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Hora da Expedição]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Hora da Expedição]"
+                      name="Hora da Expedição" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Data da Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Data da Entrega]"
+                      name="Data da Entrega" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Hora da Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Hora da Entrega]"
+                      name="Hora da Entrega" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Tempo de Produção]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Tempo de Produção]"
+                      name="Tempo de Produção" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Tempo de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Tempo de Entrega]"
+                      name="Tempo de Entrega" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Cidade da Loja]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Cidade da Loja]"
+                      name="Cidade da Loja" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Região da Loja]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Região da Loja]"
+                      name="Região da Loja" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[CEP da Loja]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[CEP da Loja]"
+                      name="CEP da Loja" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Endereço da Loja]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Endereço da Loja]"
+                      name="Endereço da Loja" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Número da Loja]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Número da Loja]"
+                      name="Número da Loja" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Cidade de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Cidade de Entrega]"
+                      name="Cidade de Entrega" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Região de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Região de Entrega]"
+                      name="Região de Entrega" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[CEP de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[CEP de Entrega]"
+                      name="CEP de Entrega" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Endereço de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Endereço de Entrega]"
+                      name="Endereço de Entrega" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Número de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Número de Entrega]"
+                      name="Número de Entrega" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Complemento de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Complemento de Entrega]"
+                      name="Complemento de Entrega" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Distância da Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Distância da Entrega]"
+                      name="Distância da Entrega" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Taxa de Entrega]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Taxa de Entrega]"
+                      name="Taxa de Entrega" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Valor Total]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Valor Total]"
+                      name="Valor Total" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Cidade de Cobrança]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Cidade de Cobrança]"
+                      name="Cidade de Cobrança" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Região de Cobrança]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Região de Cobrança]"
+                      name="Região de Cobrança" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[CEP de Cobrança]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[CEP de Cobrança]"
+                      name="CEP de Cobrança" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Endereço de Cobrança]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Endereço de Cobrança]"
+                      name="Endereço de Cobrança" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Número de Cobrança]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Número de Cobrança]"
+                      name="Número de Cobrança" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Complemento de Cobrança]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Complemento de Cobrança]"
+                      name="Complemento de Cobrança" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Complemento da loja]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[Complemento da loja]"
+                      name="Complemento da loja" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\TIngrd"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="TIngrd"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TIngrd]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\TIngrd.Connections[OleDbConnection]"
+                  connectionManagerID="{72D84447-8030-474E-B33D-B4DE4E9837D2}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[192.168.0.106.IntegrationPizzaria.curso]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\TIngrd.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\TIngrd.Inputs[OLE DB Destination Input].Columns[Ingredientes]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Ingredientes"
+                      externalMetadataColumnId="Package\Data Flow Task\TIngrd.Inputs[OLE DB Destination Input].ExternalColumns[nm_ingrd]"
+                      lineageId="Package\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[Ingredientes]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\TIngrd.Inputs[OLE DB Destination Input].Columns[Copy of Valor do Ingrediente]"
+                      cachedDataType="cy"
+                      cachedName="Copy of Valor do Ingrediente"
+                      externalMetadataColumnId="Package\Data Flow Task\TIngrd.Inputs[OLE DB Destination Input].ExternalColumns[vlr_ingrd]"
+                      lineageId="Package\Data Flow Task\Data Conversion 3.Outputs[Data Conversion Output].Columns[Copy of Valor do Ingrediente]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TIngrd.Inputs[OLE DB Destination Input].ExternalColumns[id_ingrd]"
+                      dataType="i4"
+                      name="id_ingrd" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TIngrd.Inputs[OLE DB Destination Input].ExternalColumns[nm_ingrd]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="nm_ingrd" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TIngrd.Inputs[OLE DB Destination Input].ExternalColumns[vlr_ingrd]"
+                      dataType="cy"
+                      name="vlr_ingrd" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\TIngrd.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\TIngrd.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\TIngrd.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\TIngrd.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TIngrd.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\TIngrd.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Aggregate Output 1]"
+              endId="Package\Data Flow Task\Data Conversion 3.Inputs[Data Conversion Input]"
+              name="Aggregate Output 1"
+              startId="Package\Data Flow Task\Aggregate.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Balanced Data Distributor Output 2]"
+              endId="Package\Data Flow Task\Aggregate.Inputs[Aggregate Input 1]"
+              name="Balanced Data Distributor Output 2"
+              startId="Package\Data Flow Task\Distribuindo cada coluna para uma tabela normalizada.Outputs[Balanced Data Distributor Output 2]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Data Conversion 3.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup No Match Output]"
+              endId="Package\Data Flow Task\TIngrd.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Data Flow Task\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Distribuindo cada coluna para uma tabela normalizada.Inputs[Balanced Data Distributor Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\Pizzaria.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\End Log"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{e80e1543-060c-405b-bab9-748f05185b3f}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="End Log"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="SqlStatementSource">"exec Update_Log 'End', " + @[System::PackageName] + ",0 "</DTS:PropertyExpression>
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\End Log.EventHandlers[OnError]"
+          DTS:CreationName="OnError"
+          DTS:DTSID="{fdc5ba9c-9ed3-4992-bb76-332f3343460a}"
+          DTS:EventID="0"
+          DTS:EventName="OnError"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="The propagate property of the event"
+              DTS:DTSID="{125aeb4a-f642-4c22-943a-47b95b8d25d6}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\End Log.EventHandlers[OnError]\End Log"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{7f083411-9196-45bc-9c91-ac0cd2add563}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="End Log"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:PropertyExpression
+                DTS:Name="SqlStatementSource">"exec Update_Log 'End', " + @[System::PackageName] + ",1 "</DTS:PropertyExpression>
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{72D84447-8030-474E-B33D-B4DE4E9837D2}"
+                  SQLTask:SqlStatementSource="exec Update_Log 'End', TIngrd,1 " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{72D84447-8030-474E-B33D-B4DE4E9837D2}"
+          SQLTask:SqlStatementSource="exec Update_Log 'End', TIngrd,0 " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Log"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{0ecb98c2-f9b1-44df-b358-4c4869135ec8}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Log"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="SqlStatementSource">"
+exec Update_Log 'Start', " + @[System::PackageName] + ", null
+"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{72D84447-8030-474E-B33D-B4DE4E9837D2}"
+          SQLTask:SqlStatementSource="&#xA;exec Update_Log 'Start', TIngrd, null&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{68101C04-943F-4B0B-B72B-A37706BC66CB}"
+      DTS:From="Package\Start Log"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{CB01F66C-B272-4B77-AE8E-29FC74B334DF}"
+      DTS:From="Package\Data Flow Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\End Log" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{B9CDA9DE-CC58-4F70-80C1-3BBBDE908454}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{7DFBF138-D8A4-4A99-8053-97F3C7E1CEC8}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\End Log"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{b2d33578-dfb8-4517-ade9-a11b499cc892}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="End Log"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"exec Update_Log 'End', " + @[System::PackageName] + ",1 "</DTS:PropertyExpression>
+          <DTS:EventHandlers>
+            <DTS:EventHandler
+              DTS:refId="Package.EventHandlers[OnError]\End Log.EventHandlers[OnError]"
+              DTS:CreationName="OnError"
+              DTS:DTSID="{206c8630-51f4-48fe-a332-1cd3bf57c7c6}"
+              DTS:EventID="0"
+              DTS:EventName="OnError"
+              DTS:LocaleID="-1">
+              <DTS:Variables>
+                <DTS:Variable
+                  DTS:CreationName=""
+                  DTS:Description="The propagate property of the event"
+                  DTS:DTSID="{022edab5-49d3-4944-af62-f6269d2c8651}"
+                  DTS:IncludeInDebugDump="6789"
+                  DTS:Namespace="System"
+                  DTS:ObjectName="Propagate">
+                  <DTS:VariableValue
+                    DTS:DataType="11">-1</DTS:VariableValue>
+                </DTS:Variable>
+              </DTS:Variables>
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package.EventHandlers[OnError]\End Log.EventHandlers[OnError]\End Log"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Execute SQL Task"
+                  DTS:DTSID="{a2becac0-51b7-4825-aca7-b62c24f5c18e}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="End Log"
+                  DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+                  <DTS:Variables />
+                  <DTS:PropertyExpression
+                    DTS:Name="SqlStatementSource">"exec Update_Log 'End', " + @[System::PackageName] + ",1 "</DTS:PropertyExpression>
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{72D84447-8030-474E-B33D-B4DE4E9837D2}"
+                      SQLTask:SqlStatementSource="exec Update_Log 'End', TIngrd,1 " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+              </DTS:Executables>
+            </DTS:EventHandler>
+          </DTS:EventHandlers>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{72D84447-8030-474E-B33D-B4DE4E9837D2}"
+              SQLTask:SqlStatementSource="exec Update_Log 'End', TIngrd,1 " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Data Flow Task"
+          TopLeft="286,167" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\End Log"
+          TopLeft="308,291" />
+        <NodeLayout
+          Size="124,42"
+          Id="Package\Start Log"
+          TopLeft="304,80" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="364.75,122">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="365.75,209">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,82"
+              Start="0,0"
+              End="0,74.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="120,42"
+          Id="Package.EventHandlers[OnError]\End Log"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]\End Log.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="120,42"
+          Id="Package.EventHandlers[OnError]\End Log.EventHandlers[OnError]\End Log"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="111,42"
+          Id="Package\Data Flow Task\TIngrd"
+          TopLeft="332,509" />
+        <NodeLayout
+          Size="118,42"
+          Id="Package\Data Flow Task\Pizzaria"
+          TopLeft="338,39" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Data Flow Task\Data Conversion 3"
+          TopLeft="305,318" />
+        <NodeLayout
+          Size="115,42"
+          Id="Package\Data Flow Task\Lookup"
+          TopLeft="330,395" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Data Flow Task\Aggregate"
+          TopLeft="327,230" />
+        <NodeLayout
+          Size="345,42"
+          Id="Package\Data Flow Task\Distribuindo cada coluna para uma tabela normalizada"
+          TopLeft="222,126" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="395.75,81">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
+          TopLeft="387.5,437">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72"
+              Start="0,0"
+              End="0,64.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,26.4453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="388.75,360">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Balanced Data Distributor Output 2]"
+          TopLeft="393.25,168">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62"
+              Start="0,0"
+              End="0,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-77.88611328125,21.4453125,155.7722265625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Aggregate Output 1]"
+          TopLeft="391,272">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\TIngrd">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Pizzaria">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Lookup">
+    <Properties>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q2:string">[dbo].[TIngrd]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q3:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <DtsEventHandler
+    design-time-name="Package\End Log.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="120,42"
+          Id="Package\End Log.EventHandlers[OnError]\End Log"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
