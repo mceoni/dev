@@ -38,7 +38,7 @@ pyautogui.press("enter")
 # Passo 3: Importar a base de dados de produtos
 import pandas
 
-tabela = pandas.read_csv("produtos.csv")
+tabela = pandas.read_csv("c:\dev\python\produtos.csv")
 print(tabela)
 
 for linha in tabela.index:
