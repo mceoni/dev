@@ -3,5 +3,10 @@
         {
             "path": ".."
         }
-    ]
+    ],
+    "settings": {
+        "sqldeveloper.connections.tnsConfiguration.path": "c:\\dev\\oracle\\",
+        "sqldeveloper.connections.startupScript.path": "C:\\dev\\oracle\\",
+        "sqldeveloper.sqlHistory.historyLimit": 100
+    }
 }

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name=".NET">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/.NET/ScreenSound03-projeto-inicial.zip!/" />
+      <root url="jar://$PROJECT_DIR$/.NET/api-alurabooks.zip!/" />
+      <root url="jar://$PROJECT_DIR$/.NET/curso-react-alurabooks.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
